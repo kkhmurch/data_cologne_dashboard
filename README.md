@@ -5,7 +5,6 @@ Dies ist ein Code-Starter für Project Explore 1 im Wintersemester 2021/22 mit e
 Die technische Basis zur Umsetzung ist [p5.js](https://p5js.org/).
 
 Zur Entwicklung auf dem eigenen Rechner:
-* **FIXME: Fork? Oder Tool?**
 * `git clone <repo-url>`
 * Datei `index.html` in Browser öffnen. <br>
   ![Kontext-Menü](doc/open-in-browser.png)
