@@ -1,7 +1,7 @@
-Dash Crash (Project Explore 1 - WS 2021/22)
+Dash Crash (Project Explore 1 - WS 2022/23)
 ===========================================
 
-Dies ist ein Code-Starter für Project Explore 1 im Wintersemester 2021/22 mit einem Beispiel.
+Dies ist ein Code-Starter für Project Explore 1 im Wintersemester 2022/23 mit einem Beispiel.
 Die technische Basis zur Umsetzung ist [p5.js](https://p5js.org/).
 
 Zur Entwicklung auf dem eigenen Rechner:
