@@ -36,7 +36,19 @@ Datenquellen
 * Stromverbrauch
 * Gaming Statistik
 
-und viele weitere Möglichkeiten …
+und viele weitere Möglichkeiten ...
+
+### Beispiele / Inspiration
+
+* http://dataselfportrait.catarinasampaio.com/
+* https://www.rommelballesteros.com/data-self-portraits
+* http://giorgialupi.com/data-portraits-at-ted2017
+* https://ideas.ted.com/how-to-draw-your-own-selfie-using-your-personal-data/
+* https://twitter.com/ngenart_co/status/1567660511373787136
+* https://www.youtube.com/watch?v=ypOuH_baHGI
+* https://elkue.com/nyc-slice/
+* https://quantifiedself.com/show-and-tell/
+
 
 ### Mögliche Schnittstellen und APIs für eigene Daten
 
@@ -58,3 +70,10 @@ und viele weitere Möglichkeiten …
 * Mastodon API: <br>
   Dokumentation: https://docs.joinmastodon.org/client/intro/ <br>
   Client Lib: https://github.com/Kirschn/mastodon.js
+
+### Literatur
+
+* Fry, Ben – Visualizing Data: Exploring and Explaining Data with the Processing Environment
+* Gross, Benedikt et al. – Generative Design: Visualize, Program, and Create with Processing
+* Reas, Casey et al. – Form+Code in Design, Art, and Architecture
+* Shiffman, Daniel – Learning Processing: A Beginner's Guide to Programming Images, Animation, and Interaction
