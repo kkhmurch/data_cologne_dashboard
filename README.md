@@ -22,7 +22,7 @@ Nützliche Funktionen von p5js
 
 * Daten im JSON-Format laden: [loadJSON](https://p5js.org/reference/#/p5/loadJSON)
 * Daten im CSV-Format laden: [loadTable](https://p5js.org/reference/#/p5/loadTable)
-* Daten in Pixel umrechnen: [loadTable](https://p5js.org/reference/#/p5/map)
+* Daten in Pixel umrechnen: [map](https://p5js.org/reference/#/p5/map)
 
 
 Datenquellen
