@@ -10,7 +10,7 @@ function preload() {
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(1920, 1080);
   covidSetup();
   peanutsSetup();
 }
