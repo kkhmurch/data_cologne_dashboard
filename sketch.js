@@ -3,9 +3,9 @@
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
-  covidPreload();
-  peanutsPreload();
-  colognePreload();
+  //covidPreload();
+  //peanutsPreload();
+  daytimePreload();
   luftPreload();
 
 }
@@ -14,9 +14,9 @@ function preload() {
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
   createCanvas(1920, 1080);
-  covidSetup();
-  peanutsSetup();
-  cologneSetup();
+  //covidSetup();
+  //peanutsSetup();
+  daytimeSetup();
   luftSetup();
 }
 
@@ -24,8 +24,8 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
   background(0);
-  peanutsDraw();
-  covidDraw();
-  cologneDraw();
+  //peanutsDraw();
+  //covidDraw();
+  daytimeDraw();
   luftDraw();
 }
