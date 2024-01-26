@@ -5,6 +5,9 @@
 function preload() {
   covidPreload();
   peanutsPreload();
+  colognePreload();
+  luftPreload();
+
 }
 
 // Called once when the program starts.
@@ -13,6 +16,8 @@ function setup() {
   createCanvas(1920, 1080);
   covidSetup();
   peanutsSetup();
+  cologneSetup();
+  luftSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -21,4 +26,6 @@ function draw() {
   background(0);
   peanutsDraw();
   covidDraw();
+  cologneDraw();
+  luftDraw();
 }
