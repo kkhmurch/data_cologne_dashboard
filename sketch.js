@@ -4,7 +4,8 @@
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
   covidPreload();
-  peanutsPreload();
+  //peanutsPreload();
+  luftPreload();
 }
 
 // Called once when the program starts.
@@ -12,13 +13,16 @@ function preload() {
 function setup() {
   createCanvas(1920, 1080);
   covidSetup();
-  peanutsSetup();
+  //peanutsSetup();
+  luftSetup();
+
 }
 
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
   background(0);
-  peanutsDraw();
+  //peanutsDraw();
   covidDraw();
+  luftDraw();
 }
