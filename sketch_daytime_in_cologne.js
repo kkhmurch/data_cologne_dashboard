@@ -2,25 +2,21 @@
 // Called once when the program starts just before setup().
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
-function preload() {
-  covidPreload();
-  peanutsPreload();
-  colognePreload();
+let data;
+function colognePreload() {
+data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longitude=6.95&daily=sunrise,sunset&timezone=Europe%2FBerlin&past_days=92&forecast_days=1&format=csv', 'csv', 'header');
 }
 
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
-function setup() {
+function cologneSetup() {
   createCanvas(1920, 1080);
-  covidSetup();
-  peanutsSetup();
-  cologneSetup();
+  console.log(data);
 }
 
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
-function draw() {
+function cologneDraw() {
   background(0);
-  // peanutsDraw();
-  // covidDraw();
+
 }
