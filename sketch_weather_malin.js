@@ -5,7 +5,7 @@ function weatherPreload() {
   covidResponseData = loadJSON('https://api.corona-zahlen.org/germany/history/cases/9');
 }
 
-function covidSetup() {
+function weatherSetup() {
   // Log fetched data
   print("API data: ");
   print(JSON.stringify(covidResponseData, undefined, 2));
@@ -23,7 +23,7 @@ function covidSetup() {
 }
 
 // Visualize amount of cases as circles with normalized diameters
-function covidDraw() {
+function weatherDraw() {
   strokeWeight(1);
   for(let i=0; i < covidCases.length; i++){
     const diameter = map(covidCases[i], covidCasesMin, covidCasesMax, 20, 200);

@@ -7,7 +7,9 @@ function preload() {
   //peanutsPreload();
   daytimePreload();
   luftPreload();
-
+  emmaPreload();
+  weatherPreload();
+  raffaellaPreload();
 }
 
 // Called once when the program starts.
@@ -18,6 +20,9 @@ function setup() {
   //peanutsSetup();
   daytimeSetup();
   luftSetup();
+  emmaSetup();
+  weatherSetup();
+  raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -28,4 +33,7 @@ function draw() {
   //covidDraw();
   daytimeDraw();
   luftDraw();
+  emmaDraw();
+  weatherDraw();
+  raffaellaDraw();
 }
