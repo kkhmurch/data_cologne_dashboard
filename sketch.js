@@ -5,7 +5,6 @@
 function preload() {
   covidPreload();
   peanutsPreload();
-  colognePreload();
 }
 
 // Called once when the program starts.
@@ -14,13 +13,12 @@ function setup() {
   createCanvas(1920, 1080);
   covidSetup();
   peanutsSetup();
-  cologneSetup();
 }
 
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
   background(0);
-  // peanutsDraw();
-  // covidDraw();
+  peanutsDraw();
+  covidDraw();
 }
