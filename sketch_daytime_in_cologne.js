@@ -5,14 +5,18 @@ data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longi
 }
 
 function daytimeSetup() {
-  createCanvas(1920, 1080);
   // console.log(data);
   // console.log(data.getRowCount());
   // console.log(data.getColumnCount());
   calculatedTimeDifferences();
 }
 function daytimeDraw() {
-  background(0);
+  translate(1536, 810);
+  stroke(255);
+  noFill();
+  ellipse(0,0,400);
+  translate(-1536, -810);
+
 }
 function calculatedTimeDifferences(){
   let sunriseTime = [];

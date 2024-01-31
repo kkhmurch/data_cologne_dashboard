@@ -33,12 +33,12 @@ function draw() {
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
-  luftDraw();
+  //luftDraw();
   emmaDraw();
   weatherDraw();
   raffaellaDraw();
   
-  stroke(0);
+  stroke(255);
   noFill();
   strokeWeight(2);
   rect(0, 0, 1920, 1080);
