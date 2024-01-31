@@ -11,9 +11,11 @@ function dataPrep() {
 
   const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 
+  console.log(weatherDataCologne);
+
   for (let i = 0; i < weatherDataCologne.hourly.time.length; i++) {
     // input data
-    
+
     // cologne
     let dateAndTime = weatherDataCologne.hourly.time[i].split('T');
 
@@ -44,7 +46,7 @@ function dataPrep() {
     cologneInputData[i] = innerArray;
 
     // north west far
-    dateAndTime = weatherDataCologne.hourly.time[i].split('T');
+    dateAndTime = weatherDataNorthWestFar.hourly.time[i].split('T');
 
     date = dateAndTime[0].split('-');
     yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
@@ -55,25 +57,25 @@ function dataPrep() {
     innerArray = [
       yearPercentage,
       dayPercentage,
-      weatherDataCologne.hourly.temperature_2m[i],
-      weatherDataCologne.hourly.relative_humidity_2m[i],
-      weatherDataCologne.hourly.apparent_temperature[i],
-      weatherDataCologne.hourly.precipitation[i],
-      weatherDataCologne.hourly.rain[i],
-      weatherDataCologne.hourly.snowfall[i],
-      weatherDataCologne.hourly.weather_code[i],
-      weatherDataCologne.hourly.pressure_msl[i],
-      weatherDataCologne.hourly.surface_pressure[i],
-      weatherDataCologne.hourly.cloud_cover[i],
-      weatherDataCologne.hourly.wind_speed_10m[i],
-      weatherDataCologne.hourly.wind_direction_10m[i],
-      weatherDataCologne.hourly.wind_gusts_10m[i]
+      weatherDataNorthWestFar.hourly.temperature_2m[i],
+      weatherDataNorthWestFar.hourly.relative_humidity_2m[i],
+      weatherDataNorthWestFar.hourly.apparent_temperature[i],
+      weatherDataNorthWestFar.hourly.precipitation[i],
+      weatherDataNorthWestFar.hourly.rain[i],
+      weatherDataNorthWestFar.hourly.snowfall[i],
+      weatherDataNorthWestFar.hourly.weather_code[i],
+      weatherDataNorthWestFar.hourly.pressure_msl[i],
+      weatherDataNorthWestFar.hourly.surface_pressure[i],
+      weatherDataNorthWestFar.hourly.cloud_cover[i],
+      weatherDataNorthWestFar.hourly.wind_speed_10m[i],
+      weatherDataNorthWestFar.hourly.wind_direction_10m[i],
+      weatherDataNorthWestFar.hourly.wind_gusts_10m[i]
     ];
 
     northWestFarInputData[i] = innerArray;
 
     // north far
-    dateAndTime = weatherDataCologne.hourly.time[i].split('T');
+    dateAndTime = northFarInputData.hourly.time[i].split('T');
 
     date = dateAndTime[0].split('-');
     yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
@@ -84,19 +86,19 @@ function dataPrep() {
     innerArray = [
       yearPercentage,
       dayPercentage,
-      weatherDataCologne.hourly.temperature_2m[i],
-      weatherDataCologne.hourly.relative_humidity_2m[i],
-      weatherDataCologne.hourly.apparent_temperature[i],
-      weatherDataCologne.hourly.precipitation[i],
-      weatherDataCologne.hourly.rain[i],
-      weatherDataCologne.hourly.snowfall[i],
-      weatherDataCologne.hourly.weather_code[i],
-      weatherDataCologne.hourly.pressure_msl[i],
-      weatherDataCologne.hourly.surface_pressure[i],
-      weatherDataCologne.hourly.cloud_cover[i],
-      weatherDataCologne.hourly.wind_speed_10m[i],
-      weatherDataCologne.hourly.wind_direction_10m[i],
-      weatherDataCologne.hourly.wind_gusts_10m[i]
+      northFarInputData.hourly.temperature_2m[i],
+      northFarInputData.hourly.relative_humidity_2m[i],
+      northFarInputData.hourly.apparent_temperature[i],
+      northFarInputData.hourly.precipitation[i],
+      northFarInputData.hourly.rain[i],
+      northFarInputData.hourly.snowfall[i],
+      northFarInputData.hourly.weather_code[i],
+      northFarInputData.hourly.pressure_msl[i],
+      northFarInputData.hourly.surface_pressure[i],
+      northFarInputData.hourly.cloud_cover[i],
+      northFarInputData.hourly.wind_speed_10m[i],
+      northFarInputData.hourly.wind_direction_10m[i],
+      northFarInputData.hourly.wind_gusts_10m[i]
     ];
 
     northFarInputData[i] = innerArray;

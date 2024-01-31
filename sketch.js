@@ -3,13 +3,14 @@
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
   test();
+  dataPrep();
   //covidPreload();
   //peanutsPreload();
-  daytimePreload();
-  luftPreload();
-  emmaPreload();
-  weatherPreload();
-  raffaellaPreload();
+  //daytimePreload();
+  //luftPreload();
+  //emmaPreload();
+  //weatherPreload();
+  //raffaellaPreload();
 }
 
 // Called once when the program starts.
@@ -18,11 +19,11 @@ function setup() {
   createCanvas(1920, 1080);
   //covidSetup();
   //peanutsSetup();
-  daytimeSetup();
-  luftSetup();
-  emmaSetup();
-  weatherSetup();
-  raffaellaSetup();
+  //daytimeSetup();
+  //luftSetup();
+  //emmaSetup();
+  //weatherSetup();
+  //raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -32,11 +33,11 @@ function draw() {
   background(0);
   //peanutsDraw();
   //covidDraw();
-  daytimeDraw();
-  luftDraw();
-  emmaDraw();
-  weatherDraw();
-  raffaellaDraw();
+  //daytimeDraw();
+  //luftDraw();
+  //emmaDraw();
+  //weatherDraw();
+  //raffaellaDraw();
   
   stroke(0);
   noFill();
