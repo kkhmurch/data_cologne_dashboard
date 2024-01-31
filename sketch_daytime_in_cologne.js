@@ -1,22 +1,46 @@
 
-// Called once when the program starts just before setup().
-// Use this to load external data, i.e. make your API calls here.
-// See https://p5js.org/reference/#/p5/preload
 let data;
 function daytimePreload() {
 data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longitude=6.95&daily=sunrise,sunset&timezone=Europe%2FBerlin&past_days=92&forecast_days=1&format=csv', 'csv', 'header');
 }
 
-// Called once when the program starts.
-// See https://p5js.org/reference/#/p5/setup
 function daytimeSetup() {
   createCanvas(1920, 1080);
-  console.log(data);
+  // console.log(data);
+  // console.log(data.getRowCount());
+  // console.log(data.getColumnCount());
+  calculatedTimeDifferences();
 }
-
-// Called over and over to refresh your visualisation.
-// See https://p5js.org/reference/#/p5/draw
 function daytimeDraw() {
   background(0);
-
 }
+function calculatedTimeDifferences(){
+  let sunriseTime = [];
+  for (let i = 2; i < data.getRowCount(); i++) {
+    // Get the value from the second column (index 1)
+    let value = data.getString(i, 1);
+    let time = new Date(value);
+    let minutes = time.getHours()*60 + time.getMinutes();
+    sunriseTime.push(minutes);
+  }
+  //console.log(sunriseTime);
+
+  let sunsetTime = [];
+  for(let i =2; i< data.getRowCount(); i++){
+    let unformattedValue = data.getString(i,2);
+    let time = new Date(unformattedValue);
+    let minutes = time.getHours()*60 + time.getMinutes();
+    sunsetTime.push(minutes);
+  }
+  //console.log(sunsetTime);
+
+  let dayTime = [];
+  for(let i=0; i< sunsetTime.length; i++){
+    let value = sunsetTime[i]- sunriseTime[i];
+    dayTime.push(value);
+  }
+  console.log(dayTime);
+  }
+
+
+
