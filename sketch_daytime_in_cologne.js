@@ -1,5 +1,8 @@
 
 let data;
+let dayTime;
+let innerRadius = 150;
+let outerRadius = 400;
 function daytimePreload() {
 data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longitude=6.95&daily=sunrise,sunset&timezone=Europe%2FBerlin&past_days=92&forecast_days=1&format=csv', 'csv', 'header');
 }
@@ -14,7 +17,18 @@ function daytimeDraw() {
   translate(1536, 810);
   stroke(255);
   noFill();
-  ellipse(0,0,400);
+  ellipse(0,0,outerRadius);
+  ellipse(0,0,innerRadius);
+  for(let i=0; i<12; i++){
+    fill(255);
+    let angle = map(i, 0, 12, 0, TWO_PI);
+    let x = 75*cos(angle);
+    let y = 75*sin(angle);
+    circle(x,y,6);
+  }
+
+
+
   translate(-1536, -810);
 
 }
@@ -38,7 +52,7 @@ function calculatedTimeDifferences(){
   }
   //console.log(sunsetTime);
 
-  let dayTime = [];
+   dayTime = [];
   for(let i=0; i< sunsetTime.length; i++){
     let value = sunsetTime[i]- sunriseTime[i];
     dayTime.push(value);
