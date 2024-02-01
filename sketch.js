@@ -38,7 +38,7 @@ function draw() {
   weatherDraw();
   raffaellaDraw();
   
-  stroke(255);
+  stroke(30);
   noFill();
   strokeWeight(2);
   rect(0, 0, 1920, 1080);
