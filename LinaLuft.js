@@ -16,8 +16,9 @@ function luftSetup() {
     print("Column Data:", luftData.getColumn(40));
     print("Colum numbers:", Number[(luftColumn)]);
     print("Colum numbers:", parseInt(luftColumn));
-    luftColumn.forEach(function (luftColumn) {
-        print(luftColumn);
+
+        luftColumn.forEach(function (luftColumn) {
+            print(Number(luftColumn));
     });
 
 
@@ -26,14 +27,17 @@ function luftSetup() {
 // Visualize the price of luft as gray-scale stripes with normalised lightness.
 function luftDraw() {
     strokeWeight(0);
-    for (let i = 4; i < (luftColumn.length); i++) {
-        let x = breite/(luftColumn.length-4);
-        ellipse(x,10,luftColumn)
+    luftColumn.forEach(function (luftColumn) {
+            let x = breite/(luftColumn.length-4);
+            ellipse(x,10,luftColumn)
+            x+=x;
+        });
 
-        const grayscale = map(luftColumn[i], 0, 42, 0, 255, true);
+
+       /* const grayscale = map(luftColumn[i], 0, 42, 0, 255, true);
         fill(grayscale);
         rect(0, map(i, 0, (luftColumn.length-4), 540, 1080), 768, 540 / (luftColumn.length-4));
-    }
+    }*/
 
     //colorMode(RGB, 100);
     //rect(0,0 ,300,600);
