@@ -1,17 +1,23 @@
 function dataPrep() {
-  const weatherDataCologne = loadJSON("assets/weather_cologne.json");
-  const weatherDataNorthWestFar = loadJSON("assets/weather_northWest_far.json");
-  const weatherDataNorthFar = loadJSON("assets/weather_north_far.json");
+  const weatherDataCologne = data_cologne;
+  const weatherDataNorthWest = data_northWest;
+  const weatherDataNorth = data_north;
+  const weatherDataNorthEast = data_northEast;
+  const weatherDataSouthWest = data_southWest;
+  const weatherDataSouth = data_south;
+  const weatherDataSouthEast = data_southEast;
 
   let cologneInputData = [];
-  let northWestFarInputData = [];
-  let northFarInputData = [];
+  let northWestInputData = [];
+  let northInputData = [];
 
   let outputData = [];
 
   const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 
-  console.log(weatherDataCologne);
+  // nulls
+  // are arrays subdivided?
+  // weatherDataCologne.hourly not defined :( can't access any of the datapoints...
 
   for (let i = 0; i < weatherDataCologne.hourly.time.length; i++) {
     // input data
@@ -22,7 +28,7 @@ function dataPrep() {
     let date = dateAndTime[0].split('-');
     let yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
 
-    let time = dateAndTime.split(':');
+    let time = dateAndTime[1].split(':');
     let dayPercentage = time[0] / 24;
 
     let innerArray = [
@@ -46,62 +52,62 @@ function dataPrep() {
     cologneInputData[i] = innerArray;
 
     // north west far
-    dateAndTime = weatherDataNorthWestFar.hourly.time[i].split('T');
+    dateAndTime = weatherDataNorthWest.hourly.time[i].split('T');
 
     date = dateAndTime[0].split('-');
     yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
 
-    time = dateAndTime.split(':');
+    time = dateAndTime[1].split(':');
     dayPercentage = time[0] / 24;
 
     innerArray = [
       yearPercentage,
       dayPercentage,
-      weatherDataNorthWestFar.hourly.temperature_2m[i],
-      weatherDataNorthWestFar.hourly.relative_humidity_2m[i],
-      weatherDataNorthWestFar.hourly.apparent_temperature[i],
-      weatherDataNorthWestFar.hourly.precipitation[i],
-      weatherDataNorthWestFar.hourly.rain[i],
-      weatherDataNorthWestFar.hourly.snowfall[i],
-      weatherDataNorthWestFar.hourly.weather_code[i],
-      weatherDataNorthWestFar.hourly.pressure_msl[i],
-      weatherDataNorthWestFar.hourly.surface_pressure[i],
-      weatherDataNorthWestFar.hourly.cloud_cover[i],
-      weatherDataNorthWestFar.hourly.wind_speed_10m[i],
-      weatherDataNorthWestFar.hourly.wind_direction_10m[i],
-      weatherDataNorthWestFar.hourly.wind_gusts_10m[i]
+      weatherDataNorthWest.hourly.temperature_2m[i],
+      weatherDataNorthWest.hourly.relative_humidity_2m[i],
+      weatherDataNorthWest.hourly.apparent_temperature[i],
+      weatherDataNorthWest.hourly.precipitation[i],
+      weatherDataNorthWest.hourly.rain[i],
+      weatherDataNorthWest.hourly.snowfall[i],
+      weatherDataNorthWest.hourly.weather_code[i],
+      weatherDataNorthWest.hourly.pressure_msl[i],
+      weatherDataNorthWest.hourly.surface_pressure[i],
+      weatherDataNorthWest.hourly.cloud_cover[i],
+      weatherDataNorthWest.hourly.wind_speed_10m[i],
+      weatherDataNorthWest.hourly.wind_direction_10m[i],
+      weatherDataNorthWest.hourly.wind_gusts_10m[i]
     ];
 
-    northWestFarInputData[i] = innerArray;
+    northWestInputData[i] = innerArray;
 
     // north far
-    dateAndTime = northFarInputData.hourly.time[i].split('T');
+    dateAndTime = weatherDataNorth.hourly.time[i].split('T');
 
     date = dateAndTime[0].split('-');
     yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
 
-    time = dateAndTime.split(':');
+    time = dateAndTime[1].split(':');
     dayPercentage = time[0] / 24;
 
     innerArray = [
       yearPercentage,
       dayPercentage,
-      northFarInputData.hourly.temperature_2m[i],
-      northFarInputData.hourly.relative_humidity_2m[i],
-      northFarInputData.hourly.apparent_temperature[i],
-      northFarInputData.hourly.precipitation[i],
-      northFarInputData.hourly.rain[i],
-      northFarInputData.hourly.snowfall[i],
-      northFarInputData.hourly.weather_code[i],
-      northFarInputData.hourly.pressure_msl[i],
-      northFarInputData.hourly.surface_pressure[i],
-      northFarInputData.hourly.cloud_cover[i],
-      northFarInputData.hourly.wind_speed_10m[i],
-      northFarInputData.hourly.wind_direction_10m[i],
-      northFarInputData.hourly.wind_gusts_10m[i]
+      weatherDataNorth.hourly.temperature_2m[i],
+      weatherDataNorth.hourly.relative_humidity_2m[i],
+      weatherDataNorth.hourly.apparent_temperature[i],
+      weatherDataNorth.hourly.precipitation[i],
+      weatherDataNorth.hourly.rain[i],
+      weatherDataNorth.hourly.snowfall[i],
+      weatherDataNorth.hourly.weather_code[i],
+      weatherDataNorth.hourly.pressure_msl[i],
+      weatherDataNorth.hourly.surface_pressure[i],
+      weatherDataNorth.hourly.cloud_cover[i],
+      weatherDataNorth.hourly.wind_speed_10m[i],
+      weatherDataNorth.hourly.wind_direction_10m[i],
+      weatherDataNorth.hourly.wind_gusts_10m[i]
     ];
 
-    northFarInputData[i] = innerArray;
+    northInputData[i] = innerArray;
 
     // output data    
     innerArray = [
@@ -126,18 +132,18 @@ function dataPrep() {
   }
 
   // north west far
-  for (let i = northWestFarInputData.length - 48; i >= 0; i--) {
+  for (let i = northWestInputData.length - 48; i >= 0; i--) {
     trainDataSet[i + offset] = { 
-      input: northWestFarInputData[i], 
+      input: northWestInputData[i], 
       output: [outputData[i + 1], outputData[i + 4], outputData[i + 7], outputData[i + 10], outputData[i + 13], outputData[i + 16], outputData[i + 19], outputData[i + 22], outputData[i + 25], outputData[i + 28], outputData[i + 31], outputData[i + 34], outputData[i + 37], outputData[i + 40], outputData[i + 43], outputData[i + 46]] };
     
     offset++;
   }
 
   // north far
-  for (let i = northFarInputData.length - 48; i >= 0; i--) {
+  for (let i = northInputData.length - 48; i >= 0; i--) {
     trainDataSet[i + offset] = { 
-      input: northFarInputData[i], 
+      input: northInputData[i], 
       output: [outputData[i + 1], outputData[i + 4], outputData[i + 7], outputData[i + 10], outputData[i + 13], outputData[i + 16], outputData[i + 19], outputData[i + 22], outputData[i + 25], outputData[i + 28], outputData[i + 31], outputData[i + 34], outputData[i + 37], outputData[i + 40], outputData[i + 43], outputData[i + 46]] };
   }
 }
