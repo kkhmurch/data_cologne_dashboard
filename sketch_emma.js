@@ -25,7 +25,7 @@ function emmaSetup() {
 function emmaDraw() {
 
     //My pixel space
-    //  line(768, 0, 768, 1080);
+    // line(768, 0, 768, 1080);
     // line(768 + 384, 0, 768 + 384, 1080);
 
 
