@@ -5,7 +5,7 @@ function peanutsPreload() {
   peanutsData = loadTable('https://docs.google.com/spreadsheets/d/e/2PACX-1vQv4HF1VsJRln3h1I8fpkfoTdrprJY2etWfHVhcwFcRJyfcFRLf-YENkxs6XMPFDVzhi11YuQizNbi1/pub?gid=0&single=true&output=csv', 'csv', 'header')
 }
 
-// Extract price timee series of peanuts from response data.
+// Extract price time series of peanuts from response data.
 function peanutsSetup() {
   peanutsPrice = peanutsData.rows.map(r => Number(r.obj.Preis))
 }
