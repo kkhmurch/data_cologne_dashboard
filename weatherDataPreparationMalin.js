@@ -10,6 +10,10 @@ function dataPrep() {
   let cologneInputData = [];
   let northWestInputData = [];
   let northInputData = [];
+  let northEastInputData = [];
+  let southWestInputData = [];
+  let southInputData = [];
+  let southEastInputData = [];
 
   let outputData = [];
 
@@ -108,6 +112,122 @@ function dataPrep() {
     ];
 
     northInputData[i] = innerArray;
+
+    // north east
+    dateAndTime = weatherDataNorthEast.hourly.time[i].split('T');
+
+    date = dateAndTime[0].split('-');
+    yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+
+    time = dateAndTime[1].split(':');
+    dayPercentage = time[0] / 24;
+
+    innerArray = [
+      yearPercentage,
+      dayPercentage,
+      weatherDataNorthEast.hourly.temperature_2m[i],
+      weatherDataNorthEast.hourly.relative_humidity_2m[i],
+      weatherDataNorthEast.hourly.apparent_temperature[i],
+      weatherDataNorthEast.hourly.precipitation[i],
+      weatherDataNorthEast.hourly.rain[i],
+      weatherDataNorthEast.hourly.snowfall[i],
+      weatherDataNorthEast.hourly.weather_code[i],
+      weatherDataNorthEast.hourly.pressure_msl[i],
+      weatherDataNorthEast.hourly.surface_pressure[i],
+      weatherDataNorthEast.hourly.cloud_cover[i],
+      weatherDataNorthEast.hourly.wind_speed_10m[i],
+      weatherDataNorthEast.hourly.wind_direction_10m[i],
+      weatherDataNorthEast.hourly.wind_gusts_10m[i]
+    ];
+
+    northEastInputData[i] = innerArray;
+    
+    // south west
+    dateAndTime = weatherDataSouthWest.hourly.time[i].split('T');
+
+    date = dateAndTime[0].split('-');
+    yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+
+    time = dateAndTime[1].split(':');
+    dayPercentage = time[0] / 24;
+
+    innerArray = [
+      yearPercentage,
+      dayPercentage,
+      weatherDataSouthWest.hourly.temperature_2m[i],
+      weatherDataSouthWest.hourly.relative_humidity_2m[i],
+      weatherDataSouthWest.hourly.apparent_temperature[i],
+      weatherDataSouthWest.hourly.precipitation[i],
+      weatherDataSouthWest.hourly.rain[i],
+      weatherDataSouthWest.hourly.snowfall[i],
+      weatherDataSouthWest.hourly.weather_code[i],
+      weatherDataSouthWest.hourly.pressure_msl[i],
+      weatherDataSouthWest.hourly.surface_pressure[i],
+      weatherDataSouthWest.hourly.cloud_cover[i],
+      weatherDataSouthWest.hourly.wind_speed_10m[i],
+      weatherDataSouthWest.hourly.wind_direction_10m[i],
+      weatherDataSouthWest.hourly.wind_gusts_10m[i]
+    ];
+
+    southWestInputData[i] = innerArray;
+    
+    // south
+    dateAndTime = weatherDataSouth.hourly.time[i].split('T');
+
+    date = dateAndTime[0].split('-');
+    yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+
+    time = dateAndTime[1].split(':');
+    dayPercentage = time[0] / 24;
+
+    innerArray = [
+      yearPercentage,
+      dayPercentage,
+      weatherDataSouth.hourly.temperature_2m[i],
+      weatherDataSouth.hourly.relative_humidity_2m[i],
+      weatherDataSouth.hourly.apparent_temperature[i],
+      weatherDataSouth.hourly.precipitation[i],
+      weatherDataSouth.hourly.rain[i],
+      weatherDataSouth.hourly.snowfall[i],
+      weatherDataSouth.hourly.weather_code[i],
+      weatherDataSouth.hourly.pressure_msl[i],
+      weatherDataSouth.hourly.surface_pressure[i],
+      weatherDataSouth.hourly.cloud_cover[i],
+      weatherDataSouth.hourly.wind_speed_10m[i],
+      weatherDataSouth.hourly.wind_direction_10m[i],
+      weatherDataSouth.hourly.wind_gusts_10m[i]
+    ];
+
+    southInputData[i] = innerArray;
+    
+    // south east
+    dateAndTime = weatherDataSouthEast.hourly.time[i].split('T');
+
+    date = dateAndTime[0].split('-');
+    yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+
+    time = dateAndTime[1].split(':');
+    dayPercentage = time[0] / 24;
+
+    innerArray = [
+      yearPercentage,
+      dayPercentage,
+      weatherDataSouthEast.hourly.temperature_2m[i],
+      weatherDataSouthEast.hourly.relative_humidity_2m[i],
+      weatherDataSouthEast.hourly.apparent_temperature[i],
+      weatherDataSouthEast.hourly.precipitation[i],
+      weatherDataSouthEast.hourly.rain[i],
+      weatherDataSouthEast.hourly.snowfall[i],
+      weatherDataSouthEast.hourly.weather_code[i],
+      weatherDataSouthEast.hourly.pressure_msl[i],
+      weatherDataSouthEast.hourly.surface_pressure[i],
+      weatherDataSouthEast.hourly.cloud_cover[i],
+      weatherDataSouthEast.hourly.wind_speed_10m[i],
+      weatherDataSouthEast.hourly.wind_direction_10m[i],
+      weatherDataSouthEast.hourly.wind_gusts_10m[i]
+    ];
+
+    southEastInputData[i] = innerArray;
 
     // output data    
     innerArray = [
