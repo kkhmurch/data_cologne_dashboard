@@ -12,21 +12,29 @@ function daytimeSetup() {
   // console.log(data.getRowCount());
   // console.log(data.getColumnCount());
   calculatedTimeDifferences();
+  frameRate(1);
+
 }
 function daytimeDraw() {
+
+
   translate(1536, 810);
   stroke(255);
   noFill();
   ellipse(0,0,outerRadius);
   ellipse(0,0,innerRadius);
-  for(let i=0; i<12; i++){
-    fill(255);
-    let angle = map(i, 0, 12, 0, TWO_PI);
-    let x = 75*cos(angle);
-    let y = 75*sin(angle);
-    circle(x,y,6);
-  }
+  fill(255);
 
+  for(let j=0; j<dayTime.length; j++) {
+
+    let r = map(dayTime[j], 475, 1020, 75, 200);
+    for (let i = 0; i < 12; i++) {
+      let angle = map(i, 0, 12, 0, TWO_PI);
+      let x = r * cos(angle);
+      let y = r * sin(angle);
+      circle(x, y, 6);
+    }
+  }
 
 
   translate(-1536, -810);
