@@ -67,8 +67,7 @@ function dataPrep() {
   }
 
   // removing entries that include values that are null
-  let i = trainingDataSet.length - 1;
-  for (; i >= 0; i--) {
+  for (let i = trainingDataSet.length - 1; i >= 0; i--) {
     let foundNull = false;
 
     if (trainingDataSet[i] == undefined)
@@ -102,6 +101,7 @@ function dataPrep() {
         break;
     }
   }
+
   console.log("data prep process finished")
 }
 
@@ -136,6 +136,7 @@ function setInputData(data) {
       data.hourly.wind_gusts_10m[i] * 0.001 // km/h 
     ];
 
+
     for (let j = 0; j < innerArray.length; j++) {
       if (innerArray[j] > 1) {
         console.log("value above 1: ", innerArray[j], " at index: ", j);
@@ -149,6 +150,7 @@ function setInputData(data) {
 
     inputData[i] = innerArray;
   }
+
   return inputData;
 }
 
@@ -187,7 +189,6 @@ function setTrainingData(innerInputData, outputData) {
     }
   }
 
-  //offset += inputData.length;
   return data;
 }
 
