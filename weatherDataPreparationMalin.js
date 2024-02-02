@@ -111,12 +111,12 @@ function getTrainingData(trainingData, inputData, outputData, offset) {
       input: inputData[i],
       output: outputArray };
 
-    if (trainingDataSet[i + offset] === undefined) {
+    if (data[i + offset] === undefined) {
       console.log(i);
       debugger;
     }
   }
 
-  offset += input.length;
-  trainingData.push(data);
+  offset += inputData.length;
+  trainingData = trainingData.concat(data);
 }
