@@ -2,7 +2,7 @@
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
-  test();
+  //test();
   dataPrep();
   //covidPreload();
   //peanutsPreload();
