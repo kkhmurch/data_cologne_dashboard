@@ -8,7 +8,7 @@ const testData = DATA.slice(SPLIT + 1);
 
 // https://github.com/BrainJS/brain.js
 //create a simple feed forward neural network with backpropagation
-const net = new brain.NeuralNetwork({
+const net = new brain.NeuralNetworkGPU({
   activation: 'sigmoid', // activation function
   hiddenLayers: [6],
   iterations: 200,

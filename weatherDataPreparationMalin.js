@@ -1,28 +1,27 @@
+let trainingDataSet = [];
+
+const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
+const weatherDataCologne = data_cologne;
+let halfDataLength = weatherData[0].hourly.time.length / 2;
+
+const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+
 function dataPrep() {
-  const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
+  //trainingDataSet = loadJSON('assets/training_dataset.json');
+  //return;
 
-  const weatherDataCologne = data_cologne;
+  // did i forget any data point?
+  console.assert(weatherData.length == 9);
 
-  // input data
-  let inputData = []
+  // check if the weather data all have the same length
   for (let i = 0; i < weatherData.length; i++) {
-    if (weatherData[i] == null) {
-      console.log("weatherData null at: ", i);
-      debugger;
-    }
-
-    inputData[i] = setInputData(weatherData[i]);
-
-    if (inputData[i].length == 0) {
-      console.log("inputDataLength 0 at: ", i);
-      debugger;
-    }
-
-    if (inputData[i] == null) {
-      console.log("inputData null at: ", i);
-      debugger;
-    }
+    console.assert(weatherData[0].hourly.time.length == weatherData[i].hourly.time.length)
   }
+  
+  //writeInputData1();
+  writeInputData2();
+ 
+  return;
 
   // output data
   let outputData = [];
@@ -37,15 +36,13 @@ function dataPrep() {
   }
 
   // create training dataset
-  let trainingDataSet = [];
-
-  for (let i = 0; i < inputData.length; i++) {
-    if (inputData[i].length == 0) {
+  for (let i = 0; i < inputData1.length; i++) {
+    if (inputData1[i].length == 0) {
       console.log("inputDataLength 0 at: ", i);
       debugger;
     }
 
-    trainingDataSet = trainingDataSet.concat(setTrainingData(inputData[i], outputData));
+    trainingDataSet = trainingDataSet.concat(setTrainingData(inputData1[i], outputData));
 
     if (trainingDataSet[i] == undefined || trainingDataSet[i] == null) {
       console.log("trainingDataSet undefined or null at: ", i)
@@ -103,14 +100,44 @@ function dataPrep() {
   }
 
   console.log("data prep process finished")
+
+  //saveJSON(trainingDataSet, 'assets/training_dataset.json');
+  //console.log("written to file.");
 }
 
-function setInputData(data) {
-  let inputData = [];
-  const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+function writeInputData1() {
+  // input data
+  let inputData1 = [];
 
-  for (let i = 0; i < data.hourly.time.length; i++) {
-    let dateAndTime = data.hourly.time[i].split('T');
+  // write input data
+  for (let i = 0; i < 
+    //100
+    halfDataLength
+    ; i++) {
+    // one line of input data reffering to all data points from one timestamp
+    let oneLineOfInputData = "";
+
+    // iterate the different locations
+    for (let j = 0; j < weatherData.length; j++) {
+      let temperature_2m = (weatherData[j].hourly.temperature_2m[i] + 50) / 100 // °C
+      let relative_humidity_2m = weatherData[j].hourly.relative_humidity_2m[i] * 0.01 // %
+      let apparent_temperature = (weatherData[j].hourly.apparent_temperature[i] + 50) / 100 // °C 
+      let precipitation = weatherData[j].hourly.precipitation[i] * 0.001 // mm
+      let rain = weatherData[j].hourly.rain[i] * 0.001 // mm 
+      let snowfall = weatherData[j].hourly.snowfall[i] * 0.001 // cm 
+      let pressure_msl = weatherData[j].hourly.pressure_msl[i] / 1100 // hPa (maximum measurment 1060) 
+      let surface_pressure = weatherData[j].hourly.surface_pressure[i] / 1100 // hPa 
+      let cloud_cover = weatherData[j].hourly.cloud_cover[i] * 0.01 // % 
+      let wind_speed_10m = weatherData[j].hourly.wind_speed_10m[i] * 0.001 // km/h 
+      let wind_direction_10m = weatherData[j].hourly.wind_direction_10m[i] / 360 // degree 
+      let wind_gusts_10m = weatherData[j].hourly.wind_gusts_10m[i] * 0.001 // km/h
+
+      // add all data points from one location to the single line
+      oneLineOfInputData = oneLineOfInputData.concat(temperature_2m, ",", relative_humidity_2m, ",", apparent_temperature, ",", precipitation, ",", rain, ",", snowfall, ",", pressure_msl, ",", surface_pressure, ",", cloud_cover, ",", wind_speed_10m, ",", wind_direction_10m, ",", wind_gusts_10m, ",");
+    }
+    
+    // calculate date and time as percentages
+    let dateAndTime = weatherData[0].hourly.time[i].split('T');
 
     let date = dateAndTime[0].split('-');
     let yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
@@ -118,81 +145,91 @@ function setInputData(data) {
     let time = dateAndTime[1].split(':');
     let dayPercentage = time[0] / 24;
 
-    let innerArray = [
-      yearPercentage,
-      dayPercentage,
-      (data.hourly.temperature_2m[i] + 50) / 100, // °C
-      data.hourly.relative_humidity_2m[i] * 0.01, // %
-      (data.hourly.apparent_temperature[i] + 50) / 100, // °C 
-      data.hourly.precipitation[i] * 0.001, // mm
-      data.hourly.rain[i] * 0.001, // mm 
-      data.hourly.snowfall[i] * 0.001, // cm 
-      data.hourly.weather_code[i] * 0.001, // number up to 804? 
-      data.hourly.pressure_msl[i] / 1100, // hPa (maximum measurment 1060) 
-      data.hourly.surface_pressure[i] / 1100, // hPa 
-      data.hourly.cloud_cover[i] * 0.01, // % 
-      data.hourly.wind_speed_10m[i] * 0.001, // km/h 
-      data.hourly.wind_direction_10m[i] / 360, // degree 
-      data.hourly.wind_gusts_10m[i] * 0.001 // km/h 
-    ];
+    // add date and time as end of a line
+    oneLineOfInputData = oneLineOfInputData.concat(yearPercentage, ",", dayPercentage);
 
-
-    for (let j = 0; j < innerArray.length; j++) {
-      if (innerArray[j] > 1) {
-        console.log("value above 1: ", innerArray[j], " at index: ", j);
-        debugger;
-      }
-      if (innerArray[j] < 0) {
-        console.log("value lower than 0: ", innerArray[j], " at index: ", j);
-        debugger;
-      }
-    }
-
-    inputData[i] = innerArray;
+    // add single line to array with all input data
+    console.log("adding line nr: ", i, "of ", weatherData[0].hourly.time.length, "[", i / weatherData[0].hourly.time.length, "]");
+    inputData1[i] = oneLineOfInputData;
   }
 
-  return inputData;
+  console.log("attempting to save file");
+  saveStrings(inputData1, 'inputData1.txt');
 }
 
-function setTrainingData(innerInputData, outputData) {
-  if (innerInputData.length != outputData.length) {
-    console.log("inputDataLength: ", innerInputData.length, " != outputDataLength: ", outputData.length)
-    debugger;
-  }
+function writeInputData2() {
+   // input data
+   let inputData2 = [];
 
-  let data = [];
-  for (let i = innerInputData.length - 1 - 48; i >= 0; i--) {
-
-    let outputArray = [];
-
-    for (let j = 0; j < 48; j++) {
-      outputArray[j] = outputData[i + j];
-    }
-
-    data[i] = {
-      input: innerInputData[i],
-      output: outputArray };
-
-    if (data[i] == undefined || data[i].input == null) {
-      console.log(i);
-      debugger;
-    }
-    
-    if (data[i].input == undefined || data[i].input == null) {
-      console.log("trainigData.input undefined at: ", i);
-      debugger;
-    }
-    
-    if (data[i].output == undefined || data[i].input == null) {
-      console.log("trainigData.input undefined at: ", i);
-      debugger;
-    }
-  }
-
-  return data;
+   console.log("starting iteration.")
+   // write input data
+   for (let i = halfDataLength;
+     //100
+     i < weatherData[0].hourly.time.length
+     ; i++) {
+     // one line of input data reffering to all data points from one timestamp
+     let oneLineOfInputData = "";
+ 
+     // iterate the different locations
+     for (let j = 0; j < weatherData.length; j++) {
+       let temperature_2m = (weatherData[j].hourly.temperature_2m[i] + 50) / 100 // °C
+       let relative_humidity_2m = weatherData[j].hourly.relative_humidity_2m[i] * 0.01 // %
+       let apparent_temperature = (weatherData[j].hourly.apparent_temperature[i] + 50) / 100 // °C 
+       let precipitation = weatherData[j].hourly.precipitation[i] * 0.001 // mm
+       let rain = weatherData[j].hourly.rain[i] * 0.001 // mm 
+       let snowfall = weatherData[j].hourly.snowfall[i] * 0.001 // cm 
+       let pressure_msl = weatherData[j].hourly.pressure_msl[i] / 1100 // hPa (maximum measurment 1060) 
+       let surface_pressure = weatherData[j].hourly.surface_pressure[i] / 1100 // hPa 
+       let cloud_cover = weatherData[j].hourly.cloud_cover[i] * 0.01 // % 
+       let wind_speed_10m = weatherData[j].hourly.wind_speed_10m[i] * 0.001 // km/h 
+       let wind_direction_10m = weatherData[j].hourly.wind_direction_10m[i] / 360 // degree 
+       let wind_gusts_10m = weatherData[j].hourly.wind_gusts_10m[i] * 0.001 // km/h
+ 
+       // add all data points from one location to the single line
+       oneLineOfInputData = oneLineOfInputData.concat(temperature_2m, ",", relative_humidity_2m, ",", apparent_temperature, ",", precipitation, ",", rain, ",", snowfall, ",", pressure_msl, ",", surface_pressure, ",", cloud_cover, ",", wind_speed_10m, ",", wind_direction_10m, ",", wind_gusts_10m, ",");
+     }
+     
+     // calculate date and time as percentages
+     let dateAndTime = weatherData[0].hourly.time[i].split('T');
+ 
+     let date = dateAndTime[0].split('-');
+     let yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+ 
+     let time = dateAndTime[1].split(':');
+     let dayPercentage = time[0] / 24;
+ 
+     // add date and time as end of a line
+     oneLineOfInputData = oneLineOfInputData.concat(yearPercentage, ",", dayPercentage);
+ 
+     // add single line to array with all input data
+     console.log(".");
+     inputData2[i - halfDataLength] = oneLineOfInputData;
+   }
+ 
+   console.log("attempting to save file");
+   saveStrings(inputData2, 'inputData2.txt'); 
 }
+
 
 function train(trainingData) {
- // 8 hidden layers 128 gross
- // sigmoid
+  console.log("let's-a-go!");
+
+  const net = new brain.NeuralNetwork({
+    activation: 'sigmoid', // activation function
+    hiddenLayers: [128, 128, 128, 128, 128, 128, 128, 128]
+  });
+
+  for (var i = 0; i < 2000; i++) {
+    net.train(trainingData, {
+      learningRate: 0.0005,
+      iterations: 1,
+      errorThresh: 0.005,
+      log: true,
+      logPeriod: 1,
+    });
+
+    console.log('iteration ' + i);
+    const networkState = net.toJSON();
+    saveJSON(networkState, 'assets/network_state' + i + '.json');
+  }
 }
