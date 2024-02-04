@@ -1,5 +1,6 @@
 var mapImage;
 
+
 function raffaellaPreload() {
     /*var myHeaders = new Headers();
     myHeaders.append("x-access-token", "openuv-1amtywrlrxt94pm-io");
@@ -80,8 +81,6 @@ function raffaellaDraw() {
         const date = new Date(timeString);
         const hour = date.getHours();
 
-
-
         x = 1350 + i * dimensionX ;
         if(currentHour == hour ){
 
@@ -96,7 +95,6 @@ function raffaellaDraw() {
         //ellipse(1152/2, 768/2, 1152)
         //text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
     }
-
 
     text(currentDate, 1350, 150)
     textSize(30);
