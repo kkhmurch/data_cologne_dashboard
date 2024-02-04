@@ -157,10 +157,10 @@ function writeInputDataToFile() {
   
   console.log("staring to iterate input data");
 
-  let start = 0;
-  //halfDataLength;
-  let end = halfDataLength;
-  //weatherData[0].hourly.time.length - 48;
+  let start = //0;
+  halfDataLength;
+  let end = //halfDataLength;
+  weatherData[0].hourly.time.length - 48;
 
   // write half of the input data in csv formatting (as writing everything at the same time didn't go well)
   for (let i = start; i < end; i++) {
