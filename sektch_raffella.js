@@ -1,4 +1,5 @@
 var mapImage;
+
 function raffaellaPreload() {
     /*var myHeaders = new Headers();
     myHeaders.append("x-access-token", "openuv-1amtywrlrxt94pm-io");
@@ -25,32 +26,91 @@ function raffaellaSetup() {
     print(uvRealTime);*/
     print("API data: ");
     print(JSON.stringify(uvResponseData, undefined, 2));
-
-
 }
 
 function raffaellaDraw() {
-    //print(uvResponseData.hourly.time);
-    //background(255);
-    textSize(10);
-    fill(255,100,34);
-    //text(uvResponseData.latitude, 1700, 300);
 
+    background(0);
+    strokeWeight(10);
 
-    /*var time = uvResponseData.hourly.time;
+    var currentHour = new Date().getHours();
+    console.log(currentHour);
+    const currentDate = new Date();
+    const timestamp = currentDate.getTime();
+    console.log(timestamp);
+
+    var time = uvResponseData.hourly.time;
+    let dimensionX = 400 / time.length;
+    var uvIndex = uvResponseData.hourly.uv_index_clear_sky;
+
 
     for(var i = 0; i < time.length; i++){
 
-        fill(255,100,34);
-        text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
+
+        if (uvIndex[i] == 0){
+            fill(70,168,164);
+        }
+        else if(uvIndex[i] < 0.3){
+            fill(69,168,141);
+        }
+        else if(uvIndex[i] < 0.7){
+            fill(69,168,122);
+        }
+        else if(uvIndex[i] < 1){
+            fill(73,189,107);
+        }
+        else if(uvIndex[i] < 1.3){
+            fill(80,207,85);
+        }
+        else if(uvIndex[i] < 1.7){
+            fill(119,219,83);
+        }
+        else if(uvIndex[i] < 2){
+            fill(183,219,83);
+        }
+        else if(uvIndex[i] < 2.5){
+            fill(212,219,81);
+        }
+        else{
+            fill(219,184,77);
+        }
+        stroke(0);
+
+        var timeString = time[i]
+        const date = new Date(timeString);
+        const hour = date.getHours();
+
+
+
+        x = 1350 + i * dimensionX ;
+        if(currentHour == hour ){
+
+            y = 270 + random(-15,15);
+        }
+        else {
+            y = 270;
+        }
+        circle(x, y,  dimensionX + 60, 500, 30, 30 ,30 ,30);
+        text(hour, x - 10, y + 100);
+
+        //ellipse(1152/2, 768/2, 1152)
+        //text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
     }
-    var uvIndex = uvResponseData.hourly.uv_index;
 
-    for(var i = 0; i < uvIndex.length; i++){
 
-        fill(255,100,34);
-        text(uvResponseData.hourly.uv_index[i], 1500, 50 + i * 20);
-    }*/
+    text(currentDate, 1350, 150)
+    textSize(30);
+    text("UV-Index / Köln", 1450, 90);
+    textSize(12);
 
-    image(mapImage, 1152,0);
+    stroke(0);
+    noFill();
+    ellipse(15364, 270, 150);
+
+    //image(mapImage, 1152,0);
+
 }
+
+
+
+
