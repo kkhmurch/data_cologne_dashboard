@@ -15,7 +15,7 @@ function dataPrep() {
     console.assert(weatherData[0].hourly.time.length == weatherData[i].hourly.time.length)
   }
   
-  //writeInputDataToFile();
+  writeInputDataToFile();
   //writeOutputDataToFile();
  
   return;
@@ -157,10 +157,10 @@ function writeInputDataToFile() {
   
   console.log("staring to iterate input data");
 
-  let start = //0;
-  halfDataLength;
-  let end = ///halfDataLength;
-  weatherData[0].hourly.time.length;
+  let start = 0;
+  //halfDataLength;
+  let end = halfDataLength;
+  //weatherData[0].hourly.time.length - 48;
 
   // write half of the input data in csv formatting (as writing everything at the same time didn't go well)
   for (let i = start; i < end; i++) {
@@ -175,7 +175,7 @@ function writeInputDataToFile() {
       temperature_2m = temperature_2m == null ? null : (temperature_2m + 50) * 0.01; // °C value between 0 and (less than) 1, shift negative values +50, divide by max temp of 50
 
       let relative_humidity_2m = weatherData[j].hourly.relative_humidity_2m[i];
-      relative_humidity_2m = relative_humidity_2m == null ? null : relative_humidity_2m * 0.01 // % percent to value between 0 and 1
+      relative_humidity_2m = relative_humidity_2m == null ? null : relative_humidity_2m * 0.01; // % percent to value between 0 and 1
 
       let apparent_temperature = weatherData[j].hourly.apparent_temperature[i];
       apparent_temperature = apparent_temperature == null ? null : (apparent_temperature + 50) * 0.01; // °C 
@@ -215,13 +215,20 @@ function writeInputDataToFile() {
     let dateAndTime = weatherData[0].hourly.time[i].split('T');
 
     let date = dateAndTime[0].split('-');
-    let yearPercentage = (daysAkkumulative[Number(date[1])] + Number(date[2])) / 365;
+    let yearPercentage = (daysAkkumulative[Number(date[1]) - 1] + Number(date[2])) / 365;
 
     let time = dateAndTime[1].split(':');
     let dayPercentage = time[0] / 24;
 
+    let year = (date[0] - 1900) / 200;
+
     // add date and time as end of a line
-    oneLineOfInputData = oneLineOfInputData.concat(yearPercentage, ",", dayPercentage);
+    oneLineOfInputData = oneLineOfInputData.concat(yearPercentage, ",", dayPercentage, ",", year);
+
+    if (oneLineOfInputData.includes("NaN")) {
+      console.log("NAN!!");
+      debugger;
+    }
 
     // add single line to array with all input data
     inputData[i - start] = oneLineOfInputData;
