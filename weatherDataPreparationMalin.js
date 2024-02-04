@@ -16,7 +16,7 @@ function dataPrep() {
   }
   
   //writeInputDataToFile();
-  writeOutputDataToFile();
+  //writeOutputDataToFile();
  
   return;
 
@@ -107,10 +107,10 @@ function writeOutputDataToFile() {
 
   console.log("staring to iterate output data");
 
-  let start = //weatherDataCologne.hourly.time.length / 2;
-  0;
-  let end = //weatherDataCologne.hourly.time.length - 48 - 1; 
-  weatherDataCologne.hourly.time.length / 2;
+  let start = weatherDataCologne.hourly.time.length / 2;
+  //0;
+  let end = weatherDataCologne.hourly.time.length - 48 - 1; 
+  //weatherDataCologne.hourly.time.length / 2;
 
   // write output data in csv formatting
   for (let i = start; i < end; i++) {
@@ -153,16 +153,17 @@ function writeInputDataToFile() {
   const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
 
   // input data
-  let inputData1 = [];
+  let inputData = [];
   
   console.log("staring to iterate input data");
 
+  let start = //0;
+  halfDataLength;
+  let end = ///halfDataLength;
+  weatherData[0].hourly.time.length;
+
   // write half of the input data in csv formatting (as writing everything at the same time didn't go well)
-  for (let i = 0
-    //halfDataLength;
-    ; i < halfDataLength
-    //weatherData[0].hourly.time.length
-    ; i++) {
+  for (let i = start; i < end; i++) {
     // one line of input data reffering to all data points from one timestamp
     let oneLineOfInputData = "";
 
@@ -201,7 +202,7 @@ function writeInputDataToFile() {
       wind_speed_10m = wind_speed_10m == null ? null : wind_speed_10m * 0.001; // km/h / 1000
 
       let wind_direction_10m = weatherData[j].hourly.wind_direction_10m[i];
-      wind_direction_10m = wind_direction_10m == null ? null : wind_direction_10m; / 360 // degree / 360
+      wind_direction_10m = wind_direction_10m == null ? null : wind_direction_10m / 360; // degree / 360
 
       let wind_gusts_10m = weatherData[j].hourly.wind_gusts_10m[i];
       wind_gusts_10m = wind_gusts_10m == null ? null : wind_gusts_10m * 0.001; // km/h
@@ -223,9 +224,7 @@ function writeInputDataToFile() {
     oneLineOfInputData = oneLineOfInputData.concat(yearPercentage, ",", dayPercentage);
 
     // add single line to array with all input data
-    inputData1[i
-    // - halfDataLength
-    ] = oneLineOfInputData;
+    inputData[i - start] = oneLineOfInputData;
 
     if (i % 1000 == 0)
       console.log(i);
@@ -233,7 +232,7 @@ function writeInputDataToFile() {
 
   console.log("attempting to save file");
   // saveStrings() adds a linebreak after every entry from the array
-  saveStrings(inputData1, 'inputData.txt');
+  saveStrings(inputData, 'inputData.txt');
 }
 
 function train(trainingData) {
