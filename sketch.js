@@ -29,7 +29,7 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-  background(0);
+  background(0,0,0,10);
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
