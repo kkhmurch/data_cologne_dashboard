@@ -2,7 +2,6 @@
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
-  //test();
   dataPrep();
   //covidPreload();
   //peanutsPreload();
@@ -30,14 +29,14 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-  background(100,20,90);
+  background(0);
   //peanutsDraw();
   //covidDraw();
-  daytimeDraw();
-  luftDraw();
-  emmaDraw();
-  weatherDraw();
-  raffaellaDraw();
+  //daytimeDraw();
+  //luftDraw();
+  //emmaDraw();
+  //weatherDraw();
+  //raffaellaDraw();
   
   stroke(255);
   noFill();
