@@ -1,5 +1,9 @@
 let luftData;
-let luftColumn;
+let luftColumnA;
+let luftColumnB;
+let luftColumnC;
+let luftColumnD;
+
 let xoff=0;
 let yoff =100;
 
@@ -26,32 +30,45 @@ function luftPreload() {
 
 // Extract price time series of luft from response data.
 function luftSetup() {
-    luftColumn = luftData.getColumn(40);
-    console.log("hier, das sind die Luftpreise " + luftColumn);
+    luftColumnA = luftData.getColumn(40);
+    luftColumnB = luftData.getColumn(41);
+    luftColumnC = luftData.getColumn(42);
+    luftColumnD = luftData.getColumn(44);
+    console.log("hier, das sind die Luftpreise " + luftColumnA);
     print("Column Data:", luftData.getColumn(40));
-    print("Colum numbers:", Number[(luftColumn)]);
-    print(breite/(luftColumn.length-4));
-    print(luftColumn.length-4);
+    print("Colum numbers:", Number[(luftColumnA)]);
+    print(breite/(luftColumnA.length-4));
+    print(luftColumnA.length-4);
 
 
-        luftColumn.forEach(function (luftColumn) {
+        luftColumnA.forEach(function (luftColumn) {
             print(Number(luftColumn))});
 
-    for (let i=0; i<25; i++){
-        partsA.push(new Luftparts(a,b,20, (random(0,50)), (random(100,150))));
+    for (let i=3; i<luftColumnA.length; i++){
+        let volumenA = map(luftColumnA[i], luftColumnA[3], luftColumnA[24], 0,100);
+        partsA.push(new Luftparts(a,b, volumenA, (random(0,50)), (random(100,150))));
         b+=30;
+        print("das ist A",luftColumnA[i]);
     }
-    for (let i=0; i<25; i++){
-        partsB.push(new Luftparts(c,d,20, (random(50,100)), (random(150,200))));
+    for (let i=3; i<luftColumnB.length; i++){
+        let volumenB = map(luftColumnB[i], luftColumnB[3], luftColumnB[24], 0,10);
+        print("das ist volumenb",volumenB);
+        partsB.push(new Luftparts(c,d,volumenB, (random(50,100)), (random(150,200))));
         d+=30;
+        print("das ist B",luftColumnB[i]);
     }
-    for (let i=0; i<25; i++){
-        partsC.push(new Luftparts(a,b,20, (random(0,50)), (random(100,150))));
+    for (let i=3; i<luftColumnC.length; i++){
+        let volumenC = map(luftColumnC[i], luftColumnC[3], luftColumnC[24], 0,100);
+        partsC.push(new Luftparts(a,b,volumenC, (random(0,50)), (random(100,150))));
         b+=30;
+        print("das ist c",luftColumnC[i]);
     }
-    for (let i=0; i<25; i++){
-        partsD.push(new Luftparts(c,d,20, (random(50,100)), (random(150,200))));
+    for (let i=3; i<luftColumnD.length; i++){
+        let volumenD = map(luftColumnD[i], luftColumnD[3], luftColumnD[24], 0,10000);
+        print("das ist volumen d",volumenD);
+        partsD.push(new Luftparts(c,d,volumenD, (random(50,100)), (random(150,200))));
         d+=30;
+        print("das ist d",luftColumnD[i]);
     }
 
 
@@ -62,29 +79,37 @@ function luftSetup() {
 
 function luftDraw() {
     frameRate(60);
-    colorMode(HSB);
+    colorMode(HSB, 360,100,100,100);
     noStroke();
 
-fill(199,26,86,80);
-   for(let i=0;i<partsA.length; i++) {
-       partsA[i].zeichneParts();
-   }
-fill(252,21,86,80);
-    for(let i=0;i<partsB.length; i++) {
-        partsB[i].zeichneParts();
-    }
 
-fill(342,31,86,30);
+
+for(let i=0;i<partsA.length; i++) {
+   fill(199, 26, 86,(map(i, 0, partsA.length, 0, 100)));
+   partsA[i].zeichneParts();
+}
+
+for(let i=0;i<partsB.length; i++) {
+    fill(252,21,86,(map(i,3, partsB.length, 0,100)));
+    partsB[i].zeichneParts();
+}
+
 for(let i=0;i<partsC.length; i++) {
+    fill(342,31,86,(map(i,3, partsC.length, 0,100)));
     partsC[i].zeichneParts();
 }
-fill(54,36,86,80);
+
 for(let i=0;i<partsD.length; i++) {
+    fill(54,36,86,(map(i,3, partsD.length, 0,100)));
     partsD[i].zeichneParts();
 }
 
+fill(324,31,86);
+noStroke;
+text("Luftqualität", 50,600);
+//text("Ozon:"+ LuftColumn)
 
-    /*luftColumn.forEach(function(luftColumn){print("dasist luftc.",luftColumn)});
+    /*luftColumnA.forEach(function(luftColumnA){print("dasist luftc.",luftColumnA)});
 
     fill(50,0,0,80);
     //x=x+30;
@@ -94,10 +119,10 @@ for(let i=0;i<partsD.length; i++) {
     x= map(noise(xoff),0,1, 0, 540);
 
     for (i=3; i<9; i++) {
-        if ( isNaN(luftColumn[i])) {
-            luftColumn[i] = 5;
+        if ( isNaN(luftColumnA[i])) {
+            luftColumnA[i] = 5;
         }
-        ellipse(y,x,luftColumn[i]);
+        ellipse(y,x,luftColumnA[i]);
         x=lerp(x,targetmoveA,0.7);
         y=lerp(y,targetmoveB,0.7);
 
@@ -126,16 +151,12 @@ zeichneParts (){
         if (isNaN(this.volume)) {
             this.volume = 5;
         }
-    this.x= map(noise(this.xOff),0,1, 0, 540);
-    this.y = map(noise(this.yOff),0,1, 0, 768);
-    this.xOff+=0.001;
-    this.yOff+=0.001;
-
+    this.x= 284 + map(noise(this.xOff),0,1, 0, 540);
+    this.y = 410 + map(noise(this.yOff),0,1, 0, 768);
+    this.xOff+=0.003;
+    this.yOff+=0.003;
     }
 
-connectTableColumns(){
 
-
-}
 
 }
