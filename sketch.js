@@ -29,7 +29,7 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-  background(20);
+  background(0,0,0,10);
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
@@ -37,8 +37,8 @@ function draw() {
   emmaDraw();
   weatherDraw();
   raffaellaDraw();
-
-  stroke(200);
+  
+  stroke(255);
   noFill();
   strokeWeight(2);
   rect(0, 0, 1920, 1080);

@@ -42,11 +42,12 @@ function weatherPreload() {
 
   currentData.set("SW1", loadJSON(urlStart + "50.3"+ urlConnection + "6.0" + urlEnd));
   currentData.set("S1", loadJSON(urlStart + "50.3"+ urlConnection + "7.0" + urlEnd));
-  currentDa*/
+  currentData.set("SE1", loadJSON(urlStart + "50.3"+ urlConnection + "8.0" + urlEnd));*/
+
 }
 
 function weatherSetup() {
- /* print("Weather data: ");
+  /*print("Weather data: ");
   print(JSON.stringify(currentData.get("cologne"), undefined, 2)); */
 }
 
