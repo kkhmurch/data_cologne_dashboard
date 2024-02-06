@@ -6,10 +6,10 @@ function preload() {
   //covidPreload();
   //peanutsPreload();
   daytimePreload();
-  luftPreload();
-  emmaPreload();
-  weatherPreload();
-  raffaellaPreload();
+  // luftPreload();
+  // emmaPreload();
+  // weatherPreload();
+  // raffaellaPreload();
 }
 
 // Called once when the program starts.
@@ -29,7 +29,7 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-  background(100,20,90);
+  background(0,0,0,10);
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
