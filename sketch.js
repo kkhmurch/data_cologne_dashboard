@@ -6,10 +6,10 @@ function preload() {
   //covidPreload();
   //peanutsPreload();
   daytimePreload();
-  // luftPreload();
-  // emmaPreload();
-  // weatherPreload();
-  // raffaellaPreload();
+  luftPreload();
+  emmaPreload();
+  weatherPreload();
+  raffaellaPreload();
 }
 
 // Called once when the program starts.
@@ -33,7 +33,7 @@ function draw() {
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
-  //luftDraw();
+  luftDraw();
   emmaDraw();
   weatherDraw();
   raffaellaDraw();

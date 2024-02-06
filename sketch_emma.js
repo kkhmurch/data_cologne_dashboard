@@ -2,10 +2,10 @@
 let rheinData,rheinPegel;
 
 function emmaPreload() {
-    /*//Getting the Data on the water level of the Rhein
-    rheinData = loadJSON('');
-    console.log(rheinData);
-    //httpDo('https://www.stadt-koeln.de/interne-dienste/hochwasser/pegel_ws.php')*/
+    //Getting the Data on the water level of the Rhein
+    //rheinData = loadXML('https://www.stadt-koeln.de/interne-dienste/hochwasser/pegel_ws.php');
+    //console.log(rheinData);
+    //httpDo('https://www.stadt-koeln.de/interne-dienste/hochwasser/pegel_ws.php')
 
 }
 
