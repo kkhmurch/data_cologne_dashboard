@@ -33,7 +33,8 @@ function daytimeSetup() {
 
 }
 function daytimeDraw() {
-  translate(1536, 810);
+  //translate(1536, 810);
+  translate(1670, 840);
   stroke(255);
   noFill();
   ellipse(0, 0, outerRadius);
@@ -124,7 +125,8 @@ function daytimeDraw() {
       }
      }
   //}
-  translate(-1536, -810);
+  //translate(-1536, -810);
+  translate(-1670, -840);
 }
 
 function calculatedTimeDifferences() {
