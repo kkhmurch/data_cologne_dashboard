@@ -8,7 +8,7 @@ function preload() {
   //daytimePreload();
   //luftPreload();
   //emmaPreload();
-  //weatherPreload();
+  weatherPreload();
   //raffaellaPreload();
 }
 
@@ -21,13 +21,13 @@ function setup() {
   //daytimeSetup();
   //luftSetup();
   //emmaSetup();
-  //weatherSetup();
+  weatherSetup();
   //raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
-function draw() {  
+function draw() {
 
   background(0);
   //peanutsDraw();
@@ -35,7 +35,7 @@ function draw() {
   //daytimeDraw();
   //luftDraw();
   //emmaDraw();
-  //weatherDraw();
+  weatherDraw();
   //raffaellaDraw();
   
   stroke(255);

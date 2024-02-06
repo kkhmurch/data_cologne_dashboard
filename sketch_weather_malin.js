@@ -8,7 +8,7 @@ function weatherPreload() {
 }
 
 function weatherSetup() {
-  for (let i = 0; i < 48; i++)
+  for (let i = 0; i < 5; i++)
     forecast[i] = [data_cologne.hourly.temperature_2m[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.precipitation[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.cloud_cover[data_cologne.hourly.time.length - 48 + i]];
 }  
 
@@ -16,13 +16,11 @@ function weatherDraw() {
   // (0,0) - (768,0)
   // (0,540) - (768, 540)
 
-  
-
-  const spacing = 768 / 50;
-
-  for (let i = 0; i < 48; i++) {
-    
-
-    point(i * spacing, map(forecast[i][0], -20, 50, 0, 540));
+  for (let i = 1; i <= 5; i++) {
+    fill(56, 56, 56);
+    noStroke();
+    textAlign(CENTER)
+    textSize(20);
+    text('now', (768 - 5 * 2) / 5 * i, 80);
   }
 }
