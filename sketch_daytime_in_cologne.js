@@ -53,7 +53,7 @@ function daytimeDraw() {
     radius = 2*r;
     x =0;
     y=0;
-    radiusOfTheOuterCircle = map(dayTime[dayTime.length-1][0],475, 1020, 75,500);
+    radiusOfTheOuterCircle = map(dayTime[dayTime.length-1][0],475, 1020, innerRadius/2,outerRadius/2);
     let newCircle = new Circle(x,y,radius);
     newCircle.draw();
     //previousCircle.push(newCircle);
@@ -96,7 +96,7 @@ function daytimeDraw() {
   text (timeInDays + " days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
     if (currentCircleIndex < dayTime.length - 4) {
-      r1 = map(dayTime[currentCircleIndex][0], 475, 1020, 75, 500);
+      r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
       noFill();
       colorMode(HSB);
       let h1 = 255;
