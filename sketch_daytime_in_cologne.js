@@ -69,9 +69,31 @@ function daytimeDraw() {
   noStroke();
   fill(255);
 
+  // let valueToShow = dayTime[dayTime.length-1][0].toString();
+  // let textToShow = "duration of the sunlight today is : ";
+  // textToShow = textToShow.split("");
+  // textToShow.push(valueToShow);
+  // console.log(textToShow);
+  // let textAngle = TWO_PI/3*textToShow.length;
+  // console.log(textAngle);
+  // let textRadius = -radiusOfTheOuterCircle/2 -20;
+  // console.log(textRadius);
+  // for (let i = 0; i < textToShow.length; i++) {
+  //   let x = textRadius * cos(-HALF_PI + i * textAngle);
+  //   let y = textRadius * sin(-HALF_PI + i * textAngle);
+  //   console.log(x);
+  //   console.log(y);
+  //   text(textToShow[i], x, y);
+  // }
+  var today = new Date();
+  var date_to_reply = new Date('2024-06-22');
+  var timeinmilisec = date_to_reply.getTime() - today.getTime();
+  var timeInDays =  Math.floor(timeinmilisec / (1000 * 60 * 60 * 24));
 
-  text("duration of the sunlight today is : "+dayTime[dayTime.length-1][0] + "min", textInnerRadX, - textInnerRadY -20);
-  text ("days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
+  let hours = Math.floor(dayTime[dayTime.length-1][0]/60);
+  let minutes = Math.floor(dayTime[dayTime.length-1][0]%60);
+  text( "duration of the sunlight today: "+hours + " h " + minutes + " min", textInnerRadX, - textInnerRadY -20);
+  text (timeInDays + " days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
     if (currentCircleIndex < dayTime.length - 4) {
       r1 = map(dayTime[currentCircleIndex][0], 475, 1020, 75, 500);
@@ -89,11 +111,13 @@ function daytimeDraw() {
       let textX = 0; // Define the x-coordinate for the text
       let textY = 0; // Define the y-coordinate for the text
       textAlign(CENTER, CENTER);
-      textSize(20);
+      textSize(15);
       noStroke();
       fill(255);
       text( dayTime[currentCircleIndex - 1][1], 0, -10);
-      text( dayTime[currentCircleIndex - 1][0] + "min", 0, 10);
+      let hours2 = Math.floor(dayTime[currentCircleIndex - 1][0]/60);
+      let minutes2 = Math.floor(dayTime[currentCircleIndex - 1][0]%60);
+      text( hours2 + " h " + minutes2 + " min ", 0, 10);
 
       if(currentCircleIndex==93 || currentCircleIndex ==92 || currentCircleIndex ==91 || currentCircleIndex ==90 || currentCircleIndex == 89){
         currentCircleIndex=48;
