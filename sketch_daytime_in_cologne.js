@@ -2,7 +2,7 @@
 let data;
 let dayTime =[];
 let innerRadius = 150;
-let outerRadius = 1000;
+let outerRadius = 930;
 let currentCircleIndex = 48;
 let previousCircle = [];
 let r;
