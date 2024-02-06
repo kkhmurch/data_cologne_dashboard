@@ -18,7 +18,7 @@ function dataPrep() {
   //writeInputDataToFile();
   //writeOutputDataToFile();
 
-  writeFewInputDataToFile();
+  //writeFewInputDataToFile();
   //writeFewOutputDataToFile();
 }
 
