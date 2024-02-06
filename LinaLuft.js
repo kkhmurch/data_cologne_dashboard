@@ -58,13 +58,13 @@ function luftSetup() {
         print("das ist B",luftColumnB[i]);
     }
     for (let i=3; i<luftColumnC.length; i++){
-        let volumenC = map(luftColumnC[i], luftColumnC[3], luftColumnC[24], 0,100);
+        let volumenC = map(luftColumnC[i], luftColumnC[3], luftColumnC[24], 0,30);
         partsC.push(new Luftparts(a,b,volumenC, (random(0,50)), (random(100,150))));
         b+=30;
         print("das ist c",luftColumnC[i]);
     }
     for (let i=3; i<luftColumnD.length; i++){
-        let volumenD = map(luftColumnD[i], luftColumnD[3], luftColumnD[24], 0,10000);
+        let volumenD = map(luftColumnD[i], luftColumnD[3], luftColumnD[24], 0,100);
         print("das ist volumen d",volumenD);
         partsD.push(new Luftparts(c,d,volumenD, (random(50,100)), (random(150,200))));
         d+=30;
@@ -104,9 +104,24 @@ for(let i=0;i<partsD.length; i++) {
     partsD[i].zeichneParts();
 }
 
-fill(324,31,86);
+fill(0, 50, 86);
 noStroke;
-text("Luftqualität", 50,600);
+textFont('Courier New');
+textSize(16);
+text("Luftqualität in Köln", 50,600);
+fill(0, 50, 86);
+text("gemessen in den letzten 30 Minuten:", 50,630);
+fill(199, 26, 86);
+text ("Stickstoffmonoxid (NO): " + luftColumnA  [3]+ " µg/m³", 50, 660);
+fill(252,21,86);
+text ("Stickstoffdioxid (NO2): " + luftColumnB [3]+ " µg/m³", 50, 690);
+fill(342,31,86);
+text ("Ozon(O3): "+ luftColumnB[3]+ " µg/m³", 50, 720);
+fill(0,50,86);
+text("gemessen in den letzten 24 Stunden:", 50,750);
+fill(54,36,86);
+text ("Schwebstaub (PM10F): "+ luftColumnD[3]+ " µg/m³", 50, 780);
+
 //text("Ozon:"+ LuftColumn)
 
     /*luftColumnA.forEach(function(luftColumnA){print("dasist luftc.",luftColumnA)});
