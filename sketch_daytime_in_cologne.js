@@ -3,9 +3,13 @@ let data;
 let dayTime =[];
 let innerRadius = 150;
 let outerRadius = 1000;
-let currentCircleIndex = 0;
+let currentCircleIndex = 48;
 let previousCircle = [];
 let r;
+let radius;
+let x;
+let y;
+let radiusOfTheOuterCircle;
 
 class Circle{
   constructor(x,y,r) {
@@ -26,6 +30,7 @@ function daytimePreload() {
 function daytimeSetup() {
   frameRate(2);
   calculatedTimeDifferences();
+
 }
 function daytimeDraw() {
   translate(1536, 810);
@@ -37,51 +42,62 @@ function daytimeDraw() {
 
 
   for (let i = 0; i < dayTime.length; i++) {
-    r = map(dayTime[i][0], 475, 1020, 75,500);
+    r = map(dayTime[i][0], 475, 1020, innerRadius/2,outerRadius/2);
     noFill();
     colorMode(HSB);
-    let h = map(r, innerRadius / 2, outerRadius / 2, 53, 16);
-    let s = 90;
-    let b = 96;
+    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -170);
+    let s = 74;
+    let b = 86;
+    strokeWeight(1);
     stroke(h, s, b, 5);
-    let newCircle = new Circle(0,0,2*r);
+    radius = 2*r;
+    x =0;
+    y=0;
+    radiusOfTheOuterCircle = map(dayTime[dayTime.length-1][0],475, 1020, 75,500);
+    let newCircle = new Circle(x,y,radius);
     newCircle.draw();
     //previousCircle.push(newCircle);
-    i= i+5;
+    i++;
     //console.log(previousCircle);
 
-    // let textX = 0; // Define the x-coordinate for the text
-    // let textY = 0; // Define the y-coordinate for the text
-    // textAlign(CENTER, CENTER);
-    // textSize(15);
-    // noStroke();
-    // fill(255);
-    // text("today is "+ dayTime[dayTime.length-1][1], -0, -10);
-    // text("the day lasts: "+dayTime[dayTime.length-1][0] + "min", 0, 10);
   }
+  textFont('Courier New');
+  textSize(15);
+  let textInnerRadX = x; // Define the x-coordinate for the text
+  let textInnerRadY = radiusOfTheOuterCircle; // Define the y-coordinate for the text
+  textAlign(CENTER, CENTER);
+  noStroke();
+  fill(255);
 
+
+  text("duration of the sunlight today is : "+dayTime[dayTime.length-1][0] + "min", textInnerRadX, - textInnerRadY -20);
+  text ("days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
     if (currentCircleIndex < dayTime.length - 4) {
       r1 = map(dayTime[currentCircleIndex][0], 475, 1020, 75, 500);
       noFill();
       colorMode(HSB);
-      let h1 = 10;
-      let s1 = 90;
-      let b1 = 96;
-      stroke(h1, s1, b1, 5);
+      let h1 = 255;
+      let s1 = 0;
+      let b1 = 255;
+      strokeWeight(5);
+      stroke(h1, s1, b1);
       let newCircle = new Circle(0, 0, 2 * r1);
       newCircle.draw();
-      currentCircleIndex = currentCircleIndex + 5;
+      currentCircleIndex = currentCircleIndex + 1;
 
       let textX = 0; // Define the x-coordinate for the text
       let textY = 0; // Define the y-coordinate for the text
       textAlign(CENTER, CENTER);
-      textSize(15);
+      textSize(20);
       noStroke();
       fill(255);
-      text("today is " + dayTime[currentCircleIndex - 1][1], 0, -10);
-      text("the day lasts: " + dayTime[currentCircleIndex - 1][0] + "min", 0, 10);
+      text( dayTime[currentCircleIndex - 1][1], 0, -10);
+      text( dayTime[currentCircleIndex - 1][0] + "min", 0, 10);
 
+      if(currentCircleIndex==93 || currentCircleIndex ==92 || currentCircleIndex ==91 || currentCircleIndex ==90 || currentCircleIndex == 89){
+        currentCircleIndex=48;
+      }
      }
   //}
   translate(-1536, -810);
