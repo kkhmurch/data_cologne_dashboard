@@ -42,6 +42,7 @@ div#weather_table
   padding: var(--paddingX) var(--paddingY);
 }
 
+
 .faketable
 {
     width: calc(93% / 5);
