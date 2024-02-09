@@ -12,47 +12,5 @@ function weatherSetup() {
 }  
 
 function weatherDraw() {
-  const _width = 768;
-  const _height = 540;
-  let time = 10;
-
-  noStroke();
-  fill(14)
-  const offset = 25;
-  rect(offset, offset, _width - offset * 2, _height - offset * 2, 20);
-
-  //textFont(mono_italic);
-  textAlign(CENTER);
-
-  const textCount = 5;
-  const padding = 100;
-  const spacing = (_width - padding * 2) / (textCount - 1);
-  const textOffset = 40;
-
-  for (let i = 0; i < textCount; i++) {
-    if (i == 0) {
-      fill(56);
-      textFont(mono_bold);
-      textSize(25);
-      text('now', i * spacing + padding, 90);
-
-      textSize(35);      
-      fill(255, 236, 95);
-      //text(currentData.hourly.temperature_2m + '°C', i * spacing + padding * 2, 200);
-      text('13°C', i * spacing + padding, 200);
-    }
-    else {
-      fill(56);
-      textFont(mono_light);
-      textSize(25);
-      text(time + i * 3 + ':00', i * spacing + padding, 90);
-      textSize(35);
-      text(forecast[i - 1][0] + '°C', i * spacing + padding, 200);
-    }
-  }
-
-  fill(56);
-  textSize(25);
-  textFont(mono_bold);
-  text('temperature', 125, 230)
+  
 }

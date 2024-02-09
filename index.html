@@ -5,15 +5,15 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <title>Project Explore - CoCo Dashboard Code Starter</title>
         <!-- Load p5 and addons first, ...  -->
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.sound.min.js"></script>
-        <link href="https://unpkg.com/@csstools/normalize.css@12.1.1/normalize.css" rel="stylesheet" />
-        <link rel="stylesheet" href="screen.css">
+        <!--<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/p5.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/npm/p5@1.9.0/lib/addons/p5.sound.min.js"></script>
+        <!--<link href="https://unpkg.com/@csstools/normalize.css@12.1.1/normalize.css" rel="stylesheet" />
+        !--><link rel="stylesheet" href="screen.css">
         <script src="https://unpkg.com/brain.js@1.0.0-rc.3/browser.js"></script>
         <!-- then load sketch parts ...  -->
         <!--    <script src="sketch_covid.js"></script>-->
         <!--script src="sketch_peanuts.js"></script>-->
-        <script src ="LinaLuft.js"></script>
+        <!--<script src ="LinaLuft.js"></script>
         <script src ="sketch_daytime_in_cologne.js"></script>
         <script src = "sketch_emma.js"></script>
         <script src = "sektch_raffella.js"></script>
@@ -34,5 +34,41 @@
 
 </head>
 <body>
+    <weather_box>
+        <div id="weather_table">
+            <row class="time">
+                <i class="faketable">now</i>
+                <i class="faketable">10:00</i>
+                <i class="faketable">10:00</i>
+                <i class="faketable">10:00</i>
+                <i class="faketable">10:00</i>
+            </row>
+            <row class="temperature">
+                <b class="faketable">10°C</b>
+                <b class="faketable">10°C</b>
+                <b class="faketable">10°C</b>
+                <b class="faketable">10°C</b>
+                <b class="faketable">10°C</b>
+            </row>
+            <h3>temperature</h3>
+            <row class="clouds">
+                <b class="faketable">49%</b>
+                <b class="faketable">49%</b>
+                <b class="faketable">49%</b>
+                <b class="faketable">49%</b>
+                <b class="faketable">49%</b>
+            </row>
+            <h3>cloud coverage</h3>
+            <row class="precipitation">
+                <b class="faketable">3mm</b>
+                <b class="faketable">3mm</b>
+                <b class="faketable">3mm</b>
+                <b class="faketable">3mm</b>
+                <b class="faketable">3mm</b>
+            </row>
+            <h3>precipitation</h3>
+            <h2>AI Weather Falsecast</h2>
+        </div>
+    </weather_box>
 </body>
 </html>

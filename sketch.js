@@ -37,13 +37,13 @@ function setup() {
 function draw() {
   textFont (mono_light);
   background(0);
-  
+
   //peanutsDraw();
   //covidDraw();
   //daytimeDraw();
   //luftDraw();
   //emmaDraw();
-  weatherDraw();
+  //weatherDraw();
   //raffaellaDraw();
   
   stroke(255);
