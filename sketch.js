@@ -1,3 +1,6 @@
+let mono_light;
+let mono_bold;
+
 // Called once when the program starts just before setup().
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
@@ -10,12 +13,16 @@ function preload() {
   //emmaPreload();
   weatherPreload();
   //raffaellaPreload();
+
+  mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
+  mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
 }
 
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
   createCanvas(1920, 1080);
+
   //covidSetup();
   //peanutsSetup();
   //daytimeSetup();
@@ -28,8 +35,9 @@ function setup() {
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
-
+  textFont (mono_light);
   background(0);
+  
   //peanutsDraw();
   //covidDraw();
   //daytimeDraw();
