@@ -37,11 +37,10 @@ div#weather_table
   margin: var(--margin);
   border-radius: 20px;
   font-family: 'PlexMono';
-  --paddingY: 29pt;
+  --paddingY: 20pt;
   --paddingX: 20pt;
   padding: var(--paddingX) var(--paddingY);
 }
-
 
 .faketable
 {

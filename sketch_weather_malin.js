@@ -9,6 +9,27 @@ function weatherPreload() {
 function weatherSetup() {
   for (let i = 0; i < 5; i++)
     forecast[i] = [data_cologne.hourly.temperature_2m[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.precipitation[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.cloud_cover[data_cologne.hourly.time.length - 48 + i]];
+
+  let currentTime = 10;
+
+  let weatherTable = document.getElementById('weather_table').children;
+  console.log(weatherTable);
+  let timeElements = weatherTable.item(0).children;
+  for (let i = 1; i < 5; i++) {
+  }
+  
+  let temperatureElements = weatherTable.item(1).children;
+  let cloudElements = weatherTable.item(3).children;
+  let precipitationElements = weatherTable.item(5).children;
+
+  for (let i = 0; i < 5; i++) {
+    temperatureElements.item(i).innerHTML = round(forecast[i][0]) + '°C';
+    cloudElements.item(i).innerHTML = forecast[i][2] + '%';
+    precipitationElements.item(i).innerHTML = forecast[i][1] + 'mm';
+
+    if (i > 0)
+      timeElements.item(i).innerHTML = currentTime + i * 3 + ':00';
+  }
 }  
 
 function weatherDraw() {
