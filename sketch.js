@@ -15,6 +15,7 @@ function preload() {
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
+
   createCanvas(1920, 1080);
   //covidSetup();
   //peanutsSetup();
@@ -29,21 +30,21 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-  background(100,20,90);
+
+
+  background(0);
+  stroke(255);
+  strokeWeight(3);
+  line(0, 540, 768, 540);
+  line(768 + 384, 540, 1920, 540);
+  line(768, 0, 768, 1080);
+  line(768 + 384, 0, 768 + 384, 1080);
+
   //peanutsDraw();
   //covidDraw();
   //daytimeDraw();
   //luftDraw();
   emmaDraw();
   //weatherDraw();
- // raffaellaDraw();
-  
-  stroke(255);
-  noFill();
-  strokeWeight(2);
-  rect(0, 0, 1920, 1080);
-  line(0, 540, 768, 540);
-  line(768 + 384, 540, 1920, 540);
-  line(768, 0, 768, 1080);
-  line(768 + 384, 0, 768 + 384, 1080);
+  // raffaellaDraw();
 }
