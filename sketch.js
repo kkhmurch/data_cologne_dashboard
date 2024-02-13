@@ -5,11 +5,11 @@
 function preload() {
   //covidPreload();
   //peanutsPreload();
-  daytimePreload();
-  luftPreload();
+ // daytimePreload();
+ // luftPreload();
   emmaPreload();
-  weatherPreload();
-  raffaellaPreload();
+  //weatherPreload();
+  //raffaellaPreload();
 }
 
 // Called once when the program starts.
@@ -18,11 +18,11 @@ function setup() {
   createCanvas(1920, 1080);
   //covidSetup();
   //peanutsSetup();
-  daytimeSetup();
-  luftSetup();
+ // daytimeSetup();
+ // luftSetup();
   emmaSetup();
-  weatherSetup();
-  raffaellaSetup();
+  //weatherSetup();
+ // raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -32,11 +32,11 @@ function draw() {
   background(100,20,90);
   //peanutsDraw();
   //covidDraw();
-  daytimeDraw();
+  //daytimeDraw();
   //luftDraw();
   emmaDraw();
-  weatherDraw();
-  raffaellaDraw();
+  //weatherDraw();
+ // raffaellaDraw();
   
   stroke(255);
   noFill();
