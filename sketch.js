@@ -5,14 +5,15 @@ let mono_bold;
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
-  dataPrep();
+  //dataPrep();
   //covidPreload();
   //peanutsPreload();
   //daytimePreload();
   //luftPreload();
   //emmaPreload();
-  weatherPreload();
+  //weatherPreload();
   //raffaellaPreload();
+  //test();
 
   mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
   mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
@@ -43,7 +44,7 @@ function draw() {
   //daytimeDraw();
   //luftDraw();
   //emmaDraw();
-  //weatherDraw();
+  weatherDraw();
   //raffaellaDraw();
   
   stroke(255);
