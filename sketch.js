@@ -33,12 +33,12 @@ function draw() {
 
 
   background(0);
-  stroke(255);
-  strokeWeight(3);
-  line(0, 540, 768, 540);
-  line(768 + 384, 540, 1920, 540);
-  line(768, 0, 768, 1080);
-  line(768 + 384, 0, 768 + 384, 1080);
+  //stroke(255);
+ // strokeWeight(3);
+ // line(0, 540, 768, 540);
+  //line(768 + 384, 540, 1920, 540);
+ // line(768, 0, 768, 1080);
+  //line(768 + 384, 0, 768 + 384, 1080);
 
   //peanutsDraw();
   //covidDraw();
@@ -48,3 +48,8 @@ function draw() {
   //weatherDraw();
   // raffaellaDraw();
 }
+
+//function mouseClicked (){
+
+  //emmaMouseClicked();
+//}
