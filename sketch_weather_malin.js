@@ -39,9 +39,17 @@ function weatherSetup() {
   }
   element = document.getElementById('weather_table');
   elementBack = document.getElementById('weather_table_back');
-  //document.addEventListener("mousemove", function () {  });
   box = element.getBoundingClientRect();
-}  
+}
+
+let alreadyCalled = false;
+
+document.addEventListener("mousemove", function () {
+  if (!alreadyCalled && !flipped) {
+    animationEnd = frameCount + length;
+    flipWeatherBox();
+  }
+});
 
 const _width = 768;
 const _height = 540;
@@ -49,46 +57,72 @@ const _height = 540;
 const start = 100;
 const length = 60;
 const end = start + length;
-let x = 0;
+let sinVar = 0;
 
 let flipped = false;
 
+let animationEnd;
+
+const step = (Math.PI * 0.5) / length;
+let startMs;
+
 function weatherDraw() {
-  const step = HALF_PI / length;
-  
-  if (frameCount >= start && frameCount <= end) {
-    element.style.transform = "rotateY(" + sin(x) * 180 + "deg)";
-    elementBack.style.transform = "rotateY(" + (sin(x) * 180 + 180) + "deg)";
-    x += step;
 
-    if (frameCount == end) {
-      flipped = true;
-    }
-  }
+  //if (frameCount == start) {
+  //  animationEnd = frameCount + length;
+  //  flipWeatherBox();
+  //}
+//  
+//  
+//  if (frameCount >= start && frameCount <= end) {
+//    element.style.transform = "rotateY(" + sin(x) * 180 + "deg)";
+//    elementBack.style.transform = "rotateY(" + (sin(x) * 180 + 180) + "deg)";
+//    x += step;
+//
+//    if (frameCount == end) {
+//      flipped = true;
+//    }
+//  }
+//  
+//  if (flipped) {
   
-  if (flipped) {
-    noStroke();
-    fill(14, 14, 14);
-    rect(box.x, box.y, box.width, box.height, 20);
-    
-    element.style.opacity = 0;
-    elementBack.style.opacity = 0;
-    
-    fill(255, 246, 72);
-    let spacingCurrent = _height / (currentInputData.length + 1);
-    for (let i = 0; i < currentInputData.length; i++) {
-      circle(200, i * spacingCurrent + spacingCurrent, currentInputData[i] * 20 + 2);
-    }
-
-    const spacing64 = box.width / (64 + 2);
-    for (let i = 0; i <= 64; i++) {
-      circle(i * spacing64 + spacing64 + box.x, 100, 2);
-    }
-  }
+//    noStroke();
+//    fill(14, 14, 14);
+//    rect(box.x, box.y, box.width, box.height, 20);
+//    
+//    element.style.opacity = 0;
+//    elementBack.style.opacity = 0;
+//    
+//    fill(255, 246, 72);
+//    let spacingCurrent = box.height / (currentInputData.length + 1);
+//    for (let i = 0; i < currentInputData.length; i++) {
+//      circle(200, i * spacingCurrent + spacingCurrent + box.y, currentInputData[i] * 20 + 2);
+//    }
+//
+//    const spacing64 = box.width / (64 + 2);
+//    for (let i = 0; i <= 64; i++) {
+//      circle(i * spacing64 + spacing64 + box.x, 100, 2);
+//    }
+//  }
 }
 
 function flipWeatherBox() {
+  alreadyCalled = true;
+  // think
+  // where goes the condition? where goes the callback?
+  // condition needs to be in function that get's called back, otherwise would never change
+  // what is my condition?
 
-  let weatherTable = document.getElementById('weather_table');
-  weatherTable.style.transform = "rotateY(" + sin(x) + "rad)";
+  element.style.transform = "rotateY(" + sin(sinVar) * 180 + "deg)";
+  elementBack.style.transform = "rotateY(" + (sin(sinVar) * 180 + 180) + "deg)";
+
+  if (frameCount > animationEnd) {
+    flipped = true;
+    return;
+  }
+
+  if (frameCount <= animationEnd) {
+    sinVar += step;
+    setTimeout(flipWeatherBox, 1000 / 60);
+  }
 }
