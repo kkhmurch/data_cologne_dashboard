@@ -43,11 +43,14 @@ function weatherSetup() {
 }
 
 let alreadyCalled = false;
+let compiled = false;
 
 document.addEventListener("mousemove", function () {
-  if (!alreadyCalled && !flipped) {
-    animationEnd = frameCount + length;
-    flipWeatherBox();
+  if (compiled) {
+    if (!alreadyCalled && !flipped) {
+      animationEnd = frameCount + length;
+      flipWeatherBox();
+    }
   }
 });
 
@@ -67,7 +70,8 @@ const step = (Math.PI * 0.5) / length;
 let startMs;
 
 function weatherDraw() {
-
+  if (frameCount != 0)
+    compiled = true;
   //if (frameCount == start) {
   //  animationEnd = frameCount + length;
   //  flipWeatherBox();
@@ -113,8 +117,8 @@ function flipWeatherBox() {
   // condition needs to be in function that get's called back, otherwise would never change
   // what is my condition?
 
-  element.style.transform = "rotateY(" + sin(sinVar) * 180 + "deg)";
-  elementBack.style.transform = "rotateY(" + (sin(sinVar) * 180 + 180) + "deg)";
+  element.style.transform = "rotateY(" + sin(sinVar) * -180 + "deg)";
+  elementBack.style.transform = "rotateY(" + (sin(sinVar) * -180 + 180) + "deg)";
 
   if (frameCount > animationEnd) {
     flipped = true;
