@@ -16,7 +16,7 @@ function emmaPreload() {
 function emmaSetup() {
 
 
-
+//laalaalala
 // Extract water level of Rhein from response data.
 
     rheinPegel = rheinData.timeseries[0].currentMeasurement.value;
