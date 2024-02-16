@@ -2,6 +2,7 @@
 let forecast = [];
 let currentInputData = [];
 let element;
+let elementBack;
 let box;
 
 function weatherPreload() {
@@ -37,6 +38,7 @@ function weatherSetup() {
     }
   }
   element = document.getElementById('weather_table');
+  elementBack = document.getElementById('weather_table_back');
   //document.addEventListener("mousemove", function () {  });
   box = element.getBoundingClientRect();
 }  
@@ -44,19 +46,19 @@ function weatherSetup() {
 const _width = 768;
 const _height = 540;
 
-let start = 100;
-let length = 60;
-let end = start + length;
+const start = 100;
+const length = 60;
+const end = start + length;
 let x = 0;
-let step = 180 / length;
 
 let flipped = false;
 
 function weatherDraw() {
-  
+  const step = HALF_PI / length;
   
   if (frameCount >= start && frameCount <= end) {
-    element.style.transform = "rotateY(" + x + "deg)";
+    element.style.transform = "rotateY(" + sin(x) * 180 + "deg)";
+    elementBack.style.transform = "rotateY(" + (sin(x) * 180 + 180) + "deg)";
     x += step;
 
     if (frameCount == end) {
@@ -65,14 +67,22 @@ function weatherDraw() {
   }
   
   if (flipped) {
-    //element.style.opacity = 0;
-    
-    fill(255, 0, 0);
+    noStroke();
+    fill(14, 14, 14);
     rect(box.x, box.y, box.width, box.height, 20);
-    let spacingCurrent = _height / (currentInputData.length + 1);
     
+    element.style.opacity = 0;
+    elementBack.style.opacity = 0;
+    
+    fill(255, 246, 72);
+    let spacingCurrent = _height / (currentInputData.length + 1);
     for (let i = 0; i < currentInputData.length; i++) {
-      circle(200, i * spacingCurrent + _height + spacingCurrent, currentInputData[i] * 20);
+      circle(200, i * spacingCurrent + spacingCurrent, currentInputData[i] * 20 + 2);
+    }
+
+    const spacing64 = box.width / (64 + 2);
+    for (let i = 0; i <= 64; i++) {
+      circle(i * spacing64 + spacing64 + box.x, 100, 2);
     }
   }
 }

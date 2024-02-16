@@ -22,7 +22,6 @@ body {
 }
 
 weather_box {
-    z-index: 1;
     position: absolute;
     top: 0;
     left: 0;
@@ -46,6 +45,26 @@ div#weather_table
   padding: var(--paddingX) var(--paddingY);
   transform-style: preserve-3d;
   transform: rotateY(0deg);
+  backface-visibility: hidden;
+  opacity: 1;
+}
+
+div#weather_table_back
+{
+  width: calc(768px - var(--paddingX) * 2 - var(--margin) * 2);
+  height: calc(540px - var(--paddingY) * 2 - var(--margin) * 2);
+  background: #0E0E0E;
+  --margin: 20pt;
+  margin: var(--margin);
+  border-radius: 20px;
+  font-family: 'PlexMono';
+  --paddingY: 20pt;
+  --paddingX: 20pt;
+  padding: var(--paddingX) var(--paddingY);
+  transform-style: preserve-3d;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  opacity: 1;
 }
 
 .faketable
