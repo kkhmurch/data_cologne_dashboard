@@ -5,24 +5,25 @@
 function preload() {
   //covidPreload();
   //peanutsPreload();
-  daytimePreload();
-  luftPreload();
+ // daytimePreload();
+ // luftPreload();
   emmaPreload();
-  weatherPreload();
-  raffaellaPreload();
+  //weatherPreload();
+  //raffaellaPreload();
 }
 
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
+
   createCanvas(1920, 1080);
   //covidSetup();
   //peanutsSetup();
-  daytimeSetup();
-  luftSetup();
+ // daytimeSetup();
+ // luftSetup();
   emmaSetup();
-  weatherSetup();
-  raffaellaSetup();
+  //weatherSetup();
+ // raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -37,13 +38,9 @@ function draw() {
   emmaDraw();
   weatherDraw();
   raffaellaDraw();
-  
-  stroke(255);
-  noFill();
-  strokeWeight(2);
-  rect(0, 0, 1920, 1080);
-  line(0, 540, 768, 540);
-  line(768 + 384, 540, 1920, 540);
-  line(768, 0, 768, 1080);
-  line(768 + 384, 0, 768 + 384, 1080);
 }
+
+//function mouseClicked (){
+
+  //emmaMouseClicked();
+//}
