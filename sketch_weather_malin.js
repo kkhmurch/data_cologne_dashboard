@@ -4,6 +4,8 @@ let currentInputData = [];
 let element;
 let elementBack;
 let box;
+let compiled = false;
+let alreadyCalled = false;
 
 function weatherPreload() {
   // coordinates muelheim 50.98608, 7.013688
@@ -42,38 +44,38 @@ function weatherSetup() {
   box = element.getBoundingClientRect();
 }
 
-let alreadyCalled = false;
-let compiled = false;
-
 document.addEventListener("mousemove", function () {
   if (compiled) {
+    let animationStartedAt
     if (!alreadyCalled && !flipped) {
-      animationEnd = frameCount + length;
+      animationStartedAt = frameCount;
       flipWeatherBox();
     }
   }
 });
 
-const _width = 768;
-const _height = 540;
 
 const start = 100;
-const length = 60;
-const end = start + length;
+const animationLength = 60;
+const end = start + animationLength;
 let sinVar = 0;
 
 let flipped = false;
 
 let animationEnd;
 
-const step = (Math.PI * 0.5) / length;
+const step = (Math.PI * 0.5) / animationLength;
 let startMs;
 
 function weatherDraw() {
-  if (frameCount != 0)
+  if (!compiled)
     compiled = true;
-  //if (frameCount == start) {
-  //  animationEnd = frameCount + length;
+
+  const _width = 768;
+  const _height = 540;
+  
+    //if (frameCount == start) {
+  //  animationEnd = frameCount + animationLength;
   //  flipWeatherBox();
   //}
 //  
@@ -117,16 +119,36 @@ function flipWeatherBox() {
   // condition needs to be in function that get's called back, otherwise would never change
   // what is my condition?
 
+  // make it just step based no need for start/end frames
   element.style.transform = "rotateY(" + sin(sinVar) * -180 + "deg)";
   elementBack.style.transform = "rotateY(" + (sin(sinVar) * -180 + 180) + "deg)";
 
-  if (frameCount > animationEnd) {
+  if (sinVar >= Math.PI * 0.5) {
     flipped = true;
+    sinVar = 0;
+    setTimeout(flipWeatherBoxBack, 2000);
     return;
   }
 
-  if (frameCount <= animationEnd) {
+  if (sinVar < Math.PI * 0.5) {
     sinVar += step;
     setTimeout(flipWeatherBox, 1000 / 60);
+  }
+}
+
+function flipWeatherBoxBack() {
+  element.style.transform = "rotateY(" + (sin(sinVar) * 180 + 180) + "deg)";
+  elementBack.style.transform = "rotateY(" + sin(sinVar) * 180 + "deg)";
+
+  if (sinVar >= Math.PI * 0.5) {
+    flipped = false;
+    sinVar = 0;
+    alreadyCalled = false;
+    return;
+  }
+
+  if (sinVar < Math.PI * 0.5) {
+    sinVar += step;
+    setTimeout(flipWeatherBoxBack, 1000 / 60);
   }
 }
