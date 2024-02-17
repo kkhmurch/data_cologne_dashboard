@@ -30,23 +30,14 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {  
 
-
-
-  background(0);
-  //stroke(255);
- // strokeWeight(3);
- // line(0, 540, 768, 540);
-  //line(768 + 384, 540, 1920, 540);
- // line(768, 0, 768, 1080);
-  //line(768 + 384, 0, 768 + 384, 1080);
-
+  background(0,0,0,10);
   //peanutsDraw();
   //covidDraw();
-  //daytimeDraw();
-  //luftDraw();
+  daytimeDraw();
+  luftDraw();
   emmaDraw();
-  //weatherDraw();
-  // raffaellaDraw();
+  weatherDraw();
+  raffaellaDraw();
 }
 
 //function mouseClicked (){
