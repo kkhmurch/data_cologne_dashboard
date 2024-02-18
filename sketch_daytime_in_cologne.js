@@ -97,7 +97,7 @@ document.daytimeDraw = function () {
   text (timeInDays + " days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
     if (currentCircleIndex < dayTime.length - 4) {
-      r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
+      let r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
       noFill();
       colorMode(HSB);
       let h1 = 255;
