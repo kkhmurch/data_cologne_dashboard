@@ -15,7 +15,7 @@ function weatherPreload() {
 }
 
 function weatherSetup() {
-  prepCurrentInputData();
+  //prepCurrentInputData();
 
   for (let i = 0; i < 5; i++)
     aiForecast[i] = [data_cologne.hourly.temperature_2m[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.precipitation[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.cloud_cover[data_cologne.hourly.time.length - 48 + i]];
@@ -41,16 +41,16 @@ function weatherSetup() {
     if (i > 0) {
       timeElements.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
       timeElementsBack.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
-      temperatureElements.item(i).innerHTML = round(aiForecast[i][0]) + '�C';
-      temperatureElementsBack.item(i).innerHTML = round(currentData.hourly.temperature_2m[currentTime + i * 3]) + '�C';
+      temperatureElements.item(i).innerHTML = round(aiForecast[i][0]) + '°C';
+      temperatureElementsBack.item(i).innerHTML = round(currentData.hourly.temperature_2m[currentTime + i * 3]) + '°C';
       cloudElements.item(i).innerHTML = aiForecast[i][2] + '%';
       cloudElementsBack.item(i).innerHTML = currentData.hourly.cloud_cover[currentTime + i * 3] + '%';
       precipitationElements.item(i).innerHTML = round(aiForecast[i][1]) + 'mm';
       precipitationElementsBack.item(i).innerHTML = round(currentData.hourly.precipitation[currentTime + i * 3]) + 'mm';
     }
     else {
-      temperatureElements.item(i).innerHTML = round(currentData.current.temperature_2m) + '�C';
-      temperatureElementsBack.item(i).innerHTML = round(currentData.current.temperature_2m) + '�C';
+      temperatureElements.item(i).innerHTML = round(currentData.current.temperature_2m) + '°C';
+      temperatureElementsBack.item(i).innerHTML = round(currentData.current.temperature_2m) + '°C';
       cloudElements.item(i).innerHTML = currentData.current.cloud_cover + '%';
       cloudElementsBack.item(i).innerHTML = currentData.current.cloud_cover + '%';
       precipitationElements.item(i).innerHTML = round(currentData.current.precipitation) + 'mm';

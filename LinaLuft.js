@@ -13,8 +13,8 @@ let c= 600;
 let d= 600;
 let breite = 768;
 let höhe= 540;
-let x;
-let y;
+//let x;
+//let y;
 let targetmoveA=0;
 let targetmoveB=0;
 
@@ -23,22 +23,22 @@ let partsB = [];
 let partsC=[];
 let partsD=[];
 
-function luftPreload() {
+document.luftPreload = function() {
     luftData = loadTable('https://www.opengeodata.nrw.de/produkte/umwelt_klima/luftqualitaet/luqs/aktuelle_luftqualitaet/OpenKontiLUQS_aktuelle-messwerte-24h.csv', 'ssv', 'header')
     console.log(luftData);
 }
 
 // Extract price time series of luft from response data.
-function luftSetup() {
+document.luftSetup = function() {
     luftColumnA = luftData.getColumn(40);
     luftColumnB = luftData.getColumn(41);
     luftColumnC = luftData.getColumn(42);
     luftColumnD = luftData.getColumn(44);
-    console.log("hier, das sind die Luftpreise " + luftColumnA);
-    print("Column Data:", luftData.getColumn(40));
-    print("Colum numbers:", Number[(luftColumnA)]);
-    print(breite/(luftColumnA.length-4));
-    print(luftColumnA.length-4);
+    //console.log("hier, das sind die Luftpreise " + luftColumnA);
+    //print("Column Data:", luftData.getColumn(40));
+    //print("Colum numbers:", Number[(luftColumnA)]);
+    //print(breite/(luftColumnA.length-4));
+    //print(luftColumnA.length-4);
 
 
         luftColumnA.forEach(function (luftColumn) {
@@ -48,27 +48,27 @@ function luftSetup() {
         let volumenA = map(luftColumnA[i], luftColumnA[3], luftColumnA[24], 0,100);
         partsA.push(new Luftparts(a,b, volumenA, (random(0,50)), (random(100,150))));
         b+=30;
-        print("das ist A",luftColumnA[i]);
+        //print("das ist A",luftColumnA[i]);
     }
     for (let i=3; i<luftColumnB.length; i++){
         let volumenB = map(luftColumnB[i], luftColumnB[3], luftColumnB[24], 0,10);
-        print("das ist volumenb",volumenB);
+        //print("das ist volumenb",volumenB);
         partsB.push(new Luftparts(c,d,volumenB, (random(50,100)), (random(150,200))));
         d+=30;
-        print("das ist B",luftColumnB[i]);
+        //print("das ist B",luftColumnB[i]);
     }
     for (let i=3; i<luftColumnC.length; i++){
         let volumenC = map(luftColumnC[i], luftColumnC[3], luftColumnC[24], 0,30);
         partsC.push(new Luftparts(a,b,volumenC, (random(0,50)), (random(100,150))));
         b+=30;
-        print("das ist c",luftColumnC[i]);
+        //print("das ist c",luftColumnC[i]);
     }
     for (let i=3; i<luftColumnD.length; i++){
         let volumenD = map(luftColumnD[i], luftColumnD[3], luftColumnD[24], 0,100);
-        print("das ist volumen d",volumenD);
+        //print("das ist volumen d",volumenD);
         partsD.push(new Luftparts(c,d,volumenD, (random(50,100)), (random(150,200))));
         d+=30;
-        print("das ist d",luftColumnD[i]);
+        //print("das ist d",luftColumnD[i]);
     }
 
 
@@ -77,9 +77,9 @@ function luftSetup() {
 }
 
 
-function luftDraw() {
-    frameRate(60);
-    colorMode(HSB, 360,100,100,100);
+document.luftDraw = function() {
+    push();
+    colorMode(HSB);
     noStroke();
 
 
@@ -105,7 +105,7 @@ for(let i=0;i<partsD.length; i++) {
 }
 
 fill(0, 50, 86);
-noStroke;
+noStroke();
 textFont('Courier New');
 textSize(16);
 text("Luftqualität in Köln", 50,600);
@@ -146,7 +146,7 @@ text ("Schwebstaub (PM10F): "+ luftColumnD[3]+ " µg/m³", 50, 780);
     targetmoveB = y;
 */
 
-
+    pop();
 }
 
 class Luftparts {
