@@ -3,7 +3,7 @@ let rheinData,rheinPegel,font;
 let r = 4;
 
 
-function emmaPreload() {
+document.emmaPreload = function () {
     //Getting the Data on the water level of the Rhein
 
 
@@ -13,7 +13,7 @@ function emmaPreload() {
    // font = loadFont('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 }
 
-function emmaSetup() {
+document.emmaSetup = function () {
 
 
 //laalaalala

@@ -23,16 +23,16 @@ class Circle{
 }
 
 
-function daytimePreload() {
+document.daytimePreload = function () {
   data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longitude=6.95&daily=sunrise,sunset&timezone=Europe%2FBerlin&past_days=92&forecast_days=1&format=csv', 'csv', 'header');
 }
 
-function daytimeSetup() {
+document.daytimeSetup = function () {
   frameRate(2);
   calculatedTimeDifferences();
 
 }
-function daytimeDraw() {
+document.daytimeDraw = function () {
   //translate(1536, 810);
   translate(1670, 840);
   stroke(255);

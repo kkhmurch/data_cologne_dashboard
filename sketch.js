@@ -8,11 +8,11 @@ function preload() {
   //dataPrep();
   //covidPreload();
   //peanutsPreload();
-  daytimePreload();
-  luftPreload();
-  emmaPreload();
-  weatherPreload();
-  raffaellaPreload();
+  document.daytimePreload();
+  //luftPreload();
+  //emmaPreload();
+  //weatherPreload();
+  //raffaellaPreload();
   //test();
 
   mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
@@ -27,9 +27,9 @@ function setup() {
 
   //covidSetup();
   //peanutsSetup();
- // daytimeSetup();
+  document.daytimeSetup();
  // luftSetup();
-  emmaSetup();
+  //emmaSetup();
   //weatherSetup();
  // raffaellaSetup();
 }
@@ -42,11 +42,11 @@ function draw() {
 
   //peanutsDraw();
   //covidDraw();
-  daytimeDraw();
-  luftDraw();
-  emmaDraw();
-  weatherDraw();
-  raffaellaDraw();
+  document.daytimeDraw();
+  //luftDraw();
+  //emmaDraw();
+  //weatherDraw();
+  //raffaellaDraw();
 }
 
 //function mouseClicked (){
