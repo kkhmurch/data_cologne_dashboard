@@ -39,6 +39,7 @@ function draw() {
   textFont (mono_bold);
   background(0);
 
+  background(100,20,90);
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
