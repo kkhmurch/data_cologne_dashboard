@@ -7,12 +7,12 @@ let mono_bold;
 function preload() {
   //dataPrep();
   //covidPreload();
-  //peanutsPreload();
-  //daytimePreload();
-  //luftPreload();
-  //emmaPreload();
+  peanutsPreload();
+  daytimePreload();
+  luftPreload();
+  emmaPreload();
   weatherPreload();
-  //raffaellaPreload();
+  raffaellaPreload();
   //test();
 
   mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
@@ -26,11 +26,11 @@ function setup() {
 
   //covidSetup();
   //peanutsSetup();
-  //daytimeSetup();
-  //luftSetup();
-  //emmaSetup();
+  daytimeSetup();
+  luftSetup();
+  emmaSetup();
   weatherSetup();
-  //raffaellaSetup();
+  raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -41,11 +41,11 @@ function draw() {
 
   //peanutsDraw();
   //covidDraw();
-  //daytimeDraw();
-  //luftDraw();
-  //emmaDraw();
+  daytimeDraw();
+  luftDraw();
+  emmaDraw();
   weatherDraw();
-  //raffaellaDraw();
+  raffaellaDraw();
   
   stroke(255);
   noFill();
