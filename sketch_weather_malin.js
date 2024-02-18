@@ -56,13 +56,7 @@ function weatherSetup() {
       precipitationElements.item(i).innerHTML = round(currentData.current.precipitation) + 'mm';
       precipitationElementsBack.item(i).innerHTML = round(currentData.current.precipitation) + 'mm';
     }
-  }
-
-  // actual forecast data
-  for (let i = 0; i < 5; i++) {
-    actualForecast = forecastAndCurrent.hourly.temperature_2m[currentTime + i * 3]
-  }
-  
+  }  
 }
 
 //addEventListener('load', () => { 
