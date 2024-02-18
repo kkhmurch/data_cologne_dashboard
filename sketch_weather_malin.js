@@ -1,15 +1,17 @@
-//let currentData;
+let currentData;
 let aiForecast = [];
 let actualForecast = [];
 let currentInputData = [];
 let element;
 let elementBack;
-let box;
+//let box;
 
 function weatherPreload() {
+  // reload after 1h?
   // coordinates muelheim 50.98608, 7.013688
-  //currentData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation,cloud_cover&forecast_days=3");
+  currentData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation,cloud_cover&timezone=Europe%2FBerlin&forecast_days=3");
   //("https://api.open-meteo.com/v1/forecast?latitude=50.98608&longitude=7.013688&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&forecast_days=1");
+
 }
 
 function weatherSetup() {
@@ -22,7 +24,7 @@ function weatherSetup() {
 
   element = document.getElementById('weather_table');
   elementBack = document.getElementById('weather_table_back');
-  box = element.getBoundingClientRect();
+  //box = element.getBoundingClientRect();
   
   let weatherTable = element.children;
   let weatherTableBack = elementBack.children;
@@ -40,11 +42,11 @@ function weatherSetup() {
       timeElements.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
       timeElementsBack.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
       temperatureElements.item(i).innerHTML = round(aiForecast[i][0]) + '°C';
-      temperatureElementsBack.item(i).innerHTML = round(forecastAndCurrent.hourly.temperature_2m[currentTime + i * 3]) + '°C';
+      temperatureElementsBack.item(i).innerHTML = round(currentData.hourly.temperature_2m[currentTime + i * 3]) + '°C';
       cloudElements.item(i).innerHTML = aiForecast[i][2] + '%';
-      cloudElementsBack.item(i).innerHTML = forecastAndCurrent.hourly.cloud_cover[currentTime + i * 3] + '%';
+      cloudElementsBack.item(i).innerHTML = currentData.hourly.cloud_cover[currentTime + i * 3] + '%';
       precipitationElements.item(i).innerHTML = round(aiForecast[i][1]) + 'mm';
-      precipitationElementsBack.item(i).innerHTML = round(forecastAndCurrent.hourly.precipitation[currentTime + i * 3]) + 'mm';
+      precipitationElementsBack.item(i).innerHTML = round(currentData.hourly.precipitation[currentTime + i * 3]) + 'mm';
     }
     else {
       temperatureElements.item(i).innerHTML = round(currentData.current.temperature_2m) + '°C';
@@ -89,62 +91,37 @@ function weatherSetup() {
 //});
   
   // vars for flipping animation
-let compiled = false;
-let alreadyCalled = false;
+//let compiled = false;
+//let alreadyCalled = false;
 
 const animationStart = 100;
 const animationLength = 80;
-const animationEnd = animationStart + animationLength;
+//const animationEnd = animationStart + animationLength;
 let animationVar = 0;
 
 let flipped = false;
 let flippingBack = false;
-
+//let stopped = false;
 const animationStep = (Math.PI * 0.5) / animationLength;
 
 function weatherDraw() {
-  if (!compiled)
-    compiled = true;
-
-  const _width = 768;
-  const _height = 540;
+  //if (!compiled)
+  //  compiled = true;
   
   if (frameCount == animationStart) {
     flipWeatherBox();
   }
-  
-//  if (flipped && !flippingBack) {
-//  
-//    // fake weatherbox
-//    noStroke();
-//    fill(14, 14, 14);
-//    rect(box.x, box.y, box.width, box.height, 20);
-//    
-//    // make real weatherbox invisible in order to see the canvas beneath
-//    element.style.opacity = 0;
-//    elementBack.style.opacity = 0;
-//    
-//  const boxWidth = box.width;
-//  const boxHeight = box.height;
-//  const boxXoffset = box.x;
-//  const boxYoffset = box.y;
-//
-//  noStroke();
-//  fill(14, 14, 14);
-//  rect(box.x, box.y, box.width, box.height, 20);
-//
-//  fill(255);
-//  textAlign(CENTER);
-//  textSize(25);
-//  text('Forecast vs Falsecast', boxWidth * 0.5 + boxXoffset, boxHeight - 40 + boxYoffset);
-//
-//  stroke(255);
-//  line(boxXoffset + 10, 140 + boxYoffset, boxWidth * 0.5 + boxXoffset - 10, 140 + boxYoffset);
-//  line(boxWidth * 0.5 + boxXoffset + 10, 140 + boxYoffset, boxWidth + boxXoffset - 10, 140 + boxYoffset);
-//  line(boxXoffset + 10, 300 + boxYoffset, boxWidth * 0.5 + boxXoffset - 10, 300 + boxYoffset);
-//  line(boxWidth * 0.5 + boxXoffset + 10, 300 + boxYoffset, boxWidth + boxXoffset - 10, 300 + boxYoffset);
-//    
-//  } 
+
+  //if (mouseY > box.y && mouseY < box.y + box.height && mouseX > box.x && mouseX < box.x + box.width) {
+  //  console.log(box.width);
+  //  stopped = true;
+  //} else if (!(mouseY > box.y && mouseY < box.y + box.height && mouseX > box.x && mouseX < box.x + box.width) && stopped) {
+  //  stopped = false;
+  //  if (flipped)
+  //    flipWeatherBoxBack();
+  //  else
+  //    flipWeatherBox();
+  //}
 }
 
 function flipWeatherBox() {

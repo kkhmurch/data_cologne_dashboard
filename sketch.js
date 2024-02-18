@@ -11,7 +11,7 @@ function preload() {
   //daytimePreload();
   //luftPreload();
   //emmaPreload();
-  //weatherPreload();
+  weatherPreload();
   //raffaellaPreload();
   //test();
 
