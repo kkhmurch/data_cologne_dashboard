@@ -301,45 +301,45 @@ function writeFewInputDataToFile() {
 function prepCurrentInputData() {
   const daysAkkumulative = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
   
-  let temperature_2m = currentData.current.temperature_2m; 
+  let temperature_2m = currentWeatherData.current.temperature_2m; 
   temperature_2m = temperature_2m == null ? null : (temperature_2m + 50) * 0.01; // °C value between 0 and (less than) 1, shift negative values +50, divide by max temp of 50
 
-  let relative_humidity_2m = currentData.current.relative_humidity_2m;
+  let relative_humidity_2m = currentWeatherData.current.relative_humidity_2m;
   relative_humidity_2m = relative_humidity_2m == null ? null : relative_humidity_2m * 0.01; // % percent to value between 0 and 1
 
-  let apparent_temperature = currentData.current.apparent_temperature;
+  let apparent_temperature = currentWeatherData.current.apparent_temperature;
   apparent_temperature = apparent_temperature == null ? null : (apparent_temperature + 50) * 0.01; // °C 
 
-  let precipitation = currentData.current.precipitation;
+  let precipitation = currentWeatherData.current.precipitation;
   precipitation = precipitation == null ? null : precipitation * 0.001; // mm to m
 
-  let rain = currentData.current.rain;
+  let rain = currentWeatherData.current.rain;
   rain = rain == null ? null : rain * 0.001; // mm to m
 
-  let snowfall = currentData.current.snowfall;
+  let snowfall = currentWeatherData.current.snowfall;
   snowfall = snowfall == null ? null : snowfall * 0.001; // cm / 1000 
 
-  let pressure_msl = currentData.current.pressure_msl;
+  let pressure_msl = currentWeatherData.current.pressure_msl;
   pressure_msl = pressure_msl == null ? null : pressure_msl / 1100; // hPa (maximum measurment 1060) 
 
-  let surface_pressure = currentData.current.surface_pressure;
+  let surface_pressure = currentWeatherData.current.surface_pressure;
   surface_pressure = surface_pressure == null ? null : surface_pressure / 1100; // hPa 
 
-  let cloud_cover = currentData.current.cloud_cover;
+  let cloud_cover = currentWeatherData.current.cloud_cover;
   cloud_cover = cloud_cover == null ? null : cloud_cover * 0.01; // % 
 
-  let wind_speed_10m = currentData.current.wind_speed_10m;
+  let wind_speed_10m = currentWeatherData.current.wind_speed_10m;
   wind_speed_10m = wind_speed_10m == null ? null : wind_speed_10m * 0.001; // km/h / 1000
 
-  let wind_direction_10m = currentData.current.wind_direction_10m;
+  let wind_direction_10m = currentWeatherData.current.wind_direction_10m;
   wind_direction_10m = wind_direction_10m == null ? null : wind_direction_10m / 360; // degree / 360
 
-  let wind_gusts_10m = currentData.current.wind_gusts_10m;
+  let wind_gusts_10m = currentWeatherData.current.wind_gusts_10m;
   wind_gusts_10m = wind_gusts_10m == null ? null : wind_gusts_10m * 0.001; // km/h
 
   
   // calculate date and time as percentages
-  let dateAndTime = currentData.current.time.split('T');
+  let dateAndTime = currentWeatherData.current.time.split('T');
 
   let date = dateAndTime[0].split('-');
   let yearPercentage = (daysAkkumulative[Number(date[1]) - 1] + Number(date[2])) / 365;
