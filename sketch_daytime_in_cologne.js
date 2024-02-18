@@ -28,7 +28,7 @@ document.daytimePreload = function () {
 }
 
 document.daytimeSetup = function () {
-  frameRate(2);
+  frameRate(60);
   calculatedTimeDifferences();
 
 }
