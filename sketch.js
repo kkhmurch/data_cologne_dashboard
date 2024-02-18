@@ -7,7 +7,7 @@ let mono_bold;
 function preload() {
   //dataPrep();
   //covidPreload();
-  peanutsPreload();
+  //peanutsPreload();
   daytimePreload();
   luftPreload();
   emmaPreload();
@@ -22,15 +22,16 @@ function preload() {
 // Called once when the program starts.
 // See https://p5js.org/reference/#/p5/setup
 function setup() {
+
   createCanvas(1920, 1080);
 
   //covidSetup();
   //peanutsSetup();
-  daytimeSetup();
-  luftSetup();
+ // daytimeSetup();
+ // luftSetup();
   emmaSetup();
-  weatherSetup();
-  raffaellaSetup();
+  //weatherSetup();
+ // raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -39,7 +40,6 @@ function draw() {
   textFont (mono_bold);
   background(0);
 
-  background(100,20,90);
   //peanutsDraw();
   //covidDraw();
   daytimeDraw();
@@ -47,13 +47,9 @@ function draw() {
   emmaDraw();
   weatherDraw();
   raffaellaDraw();
-  
-  stroke(255);
-  noFill();
-  strokeWeight(2);
-  rect(0, 0, 1920, 1080);
-  line(0, 540, 768, 540);
-  line(768 + 384, 540, 1920, 540);
-  line(768, 0, 768, 1080);
-  line(768 + 384, 0, 768 + 384, 1080);
 }
+
+//function mouseClicked (){
+
+  //emmaMouseClicked();
+//}
