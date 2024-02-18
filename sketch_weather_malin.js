@@ -1,15 +1,15 @@
-let currentData;
+let currentWeatherData;
 let aiForecast = [];
 let actualForecast = [];
 let currentInputData = [];
-let element;
-let elementBack;
+let elementWeahterTable;
+let elementBackWeatherTable;
 //let box;
 
 function weatherPreload() {
   // reload after 1h?
   // coordinates muelheim 50.98608, 7.013688
-  currentData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation,cloud_cover&timezone=Europe%2FBerlin&forecast_days=3");
+  currentWeatherData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation,cloud_cover&timezone=Europe%2FBerlin&forecast_days=3");
   //("https://api.open-meteo.com/v1/forecast?latitude=50.98608&longitude=7.013688&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&forecast_days=1");
 
 }
@@ -17,17 +17,24 @@ function weatherPreload() {
 function weatherSetup() {
   //prepCurrentInputData();
 
-  for (let i = 0; i < 5; i++)
-    aiForecast[i] = [data_cologne.hourly.temperature_2m[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.precipitation[data_cologne.hourly.time.length - 48 + i], data_cologne.hourly.cloud_cover[data_cologne.hourly.time.length - 48 + i]];
+    let inner1 = [11, 0, 0];
+    let inner2 = [12, 0, 0];
+    let inner3 = [8, 10, 1];
+    let inner4 = [8, 0, 0];
+    
+    aiForecast[0] = inner1;
+    aiForecast[1] = inner2;
+    aiForecast[2] = inner3;
+    aiForecast[3] = inner4;
 
-  let currentTime = Number(currentData.current.time.split('T')[1].split(':')[0]);
+  let currentTime = Number(currentWeatherData.current.time.split('T')[1].split(':')[0]);
 
-  element = document.getElementById('weather_table');
-  elementBack = document.getElementById('weather_table_back');
+  elementWeahterTable = document.getElementById('weather_table');
+  elementBackWeatherTable = document.getElementById('weather_table_back');
   //box = element.getBoundingClientRect();
   
-  let weatherTable = element.children;
-  let weatherTableBack = elementBack.children;
+  let weatherTable = elementWeahterTable.children;
+  let weatherTableBack = elementBackWeatherTable.children;
   let timeElements = weatherTable.item(0).children;  
   let timeElementsBack = weatherTableBack.item(0).children;  
   let temperatureElements = weatherTable.item(1).children;
@@ -41,20 +48,20 @@ function weatherSetup() {
     if (i > 0) {
       timeElements.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
       timeElementsBack.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
-      temperatureElements.item(i).innerHTML = round(aiForecast[i][0]) + '°C';
-      temperatureElementsBack.item(i).innerHTML = round(currentData.hourly.temperature_2m[currentTime + i * 3]) + '°C';
-      cloudElements.item(i).innerHTML = aiForecast[i][2] + '%';
-      cloudElementsBack.item(i).innerHTML = currentData.hourly.cloud_cover[currentTime + i * 3] + '%';
-      precipitationElements.item(i).innerHTML = round(aiForecast[i][1]) + 'mm';
-      precipitationElementsBack.item(i).innerHTML = round(currentData.hourly.precipitation[currentTime + i * 3]) + 'mm';
+      temperatureElements.item(i).innerHTML = round(aiForecast[i - 1][0]) + '°C';
+      temperatureElementsBack.item(i).innerHTML = round(currentWeatherData.hourly.temperature_2m[currentTime + i * 3]) + '°C';
+      cloudElements.item(i).innerHTML = aiForecast[i - 1][2] + '%';
+      cloudElementsBack.item(i).innerHTML = currentWeatherData.hourly.cloud_cover[currentTime + i * 3] + '%';
+      precipitationElements.item(i).innerHTML = round(aiForecast[i - 1][1]) + 'mm';
+      precipitationElementsBack.item(i).innerHTML = round(currentWeatherData.hourly.precipitation[currentTime + i * 3]) + 'mm';
     }
     else {
-      temperatureElements.item(i).innerHTML = round(currentData.current.temperature_2m) + '°C';
-      temperatureElementsBack.item(i).innerHTML = round(currentData.current.temperature_2m) + '°C';
-      cloudElements.item(i).innerHTML = currentData.current.cloud_cover + '%';
-      cloudElementsBack.item(i).innerHTML = currentData.current.cloud_cover + '%';
-      precipitationElements.item(i).innerHTML = round(currentData.current.precipitation) + 'mm';
-      precipitationElementsBack.item(i).innerHTML = round(currentData.current.precipitation) + 'mm';
+      temperatureElements.item(i).innerHTML = round(currentWeatherData.current.temperature_2m) + '°C';
+      temperatureElementsBack.item(i).innerHTML = round(currentWeatherData.current.temperature_2m) + '°C';
+      cloudElements.item(i).innerHTML = currentWeatherData.current.cloud_cover + '%';
+      cloudElementsBack.item(i).innerHTML = currentWeatherData.current.cloud_cover + '%';
+      precipitationElements.item(i).innerHTML = round(currentWeatherData.current.precipitation) + 'mm';
+      precipitationElementsBack.item(i).innerHTML = round(currentWeatherData.current.precipitation) + 'mm';
     }
   }  
 }
@@ -122,11 +129,11 @@ function flipWeatherBox() {
   alreadyCalled = true;
   flippingBack = false;
 
-  elementBack.style.opacity = 1;
-  elementBack.style.opacity = 1;
+  elementBackWeatherTable.style.opacity = 1;
+  elementBackWeatherTable.style.opacity = 1;
 
-  element.style.transform = "rotateY(" + sin(animationVar) * -180 + "deg)";
-  elementBack.style.transform = "rotateY(" + (sin(animationVar) * -180 + 180) + "deg)";
+  elementWeahterTable.style.transform = "rotateY(" + sin(animationVar) * -180 + "deg)";
+  elementBackWeatherTable.style.transform = "rotateY(" + (sin(animationVar) * -180 + 180) + "deg)";
 
   if (animationVar >= Math.PI * 0.5) {
     flipped = true;
@@ -144,11 +151,11 @@ function flipWeatherBox() {
 function flipWeatherBoxBack() {
   flippingBack = true;
   
-  element.style.opacity = 1;
-  elementBack.style.opacity = 1;
+  elementWeahterTable.style.opacity = 1;
+  elementBackWeatherTable.style.opacity = 1;
 
-  element.style.transform = "rotateY(" + (sin(animationVar) * 180 + 180) + "deg)";
-  elementBack.style.transform = "rotateY(" + sin(animationVar) * 180 + "deg)";
+  elementWeahterTable.style.transform = "rotateY(" + (sin(animationVar) * 180 + 180) + "deg)";
+  elementBackWeatherTable.style.transform = "rotateY(" + sin(animationVar) * 180 + "deg)";
 
   if (animationVar >= Math.PI * 0.5) {
     flipped = false;
