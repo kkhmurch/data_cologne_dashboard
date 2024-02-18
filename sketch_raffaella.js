@@ -1,7 +1,7 @@
 var mapImage;
+let uvResponseData;
 
-
-function raffaellaPreload() {
+document.raffaellaPreload = function() {
     /*var myHeaders = new Headers();
     myHeaders.append("x-access-token", "openuv-1amtywrlrxt94pm-io");
     myHeaders.append("Content-Type", "application/json");
@@ -19,26 +19,26 @@ function raffaellaPreload() {
 
     uvIndexResponseData = loadJson("https://api.openuv.io/api/v1/uv?lat=:lat&lng=:lng&alt=:alt&dt=:dt");*/
     uvResponseData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=50.9333&longitude=6.95&hourly=uv_index,uv_index_clear_sky&daily=uv_index_max,uv_index_clear_sky_max&timezone=Europe%2FBerlin&forecast_days=1")
-    mapImage = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v11/static/6.9664,50.9392,11.54,0/768x540?access_token=pk.eyJ1IjoicmFmZmFlbGxhY2xiIiwiYSI6ImNsczMxdGV2NDBsb20ybHBjeTYyaWJnb2cifQ.vPiHT9ijY50sU465CngW0g')
+    //mapImage = loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v11/static/6.9664,50.9392,11.54,0/768x540?access_token=pk.eyJ1IjoicmFmZmFlbGxhY2xiIiwiYSI6ImNsczMxdGV2NDBsb20ybHBjeTYyaWJnb2cifQ.vPiHT9ijY50sU465CngW0g')
 }
 
-function raffaellaSetup() {
+document.raffaellaSetup = function() {
     /*uvRealTime = uvIndexResponseData.result.sun_info.uv;
     print(uvRealTime);*/
-    print("API data: ");
-    print(JSON.stringify(uvResponseData, undefined, 2));
+    //print("API data: ");
+    //print(JSON.stringify(uvResponseData, undefined, 2));
 }
 
-function raffaellaDraw() {
+document.raffaellaDraw = function() {
 
     background(0);
     strokeWeight(10);
 
     var currentHour = new Date().getHours();
-    console.log(currentHour);
+    //console.log(currentHour);
     const currentDate = new Date();
     const timestamp = currentDate.getTime();
-    console.log(timestamp);
+    //console.log(timestamp);
 
     var time = uvResponseData.hourly.time;
     let dimensionX = 400 / time.length;
@@ -81,7 +81,8 @@ function raffaellaDraw() {
         const date = new Date(timeString);
         const hour = date.getHours();
 
-        x = 1350 + i * dimensionX ;
+        let x = 1350 + i * dimensionX ;
+        let y;
         if(currentHour == hour ){
 
             y = 270 + random(-15,15);
@@ -106,7 +107,6 @@ function raffaellaDraw() {
     ellipse(15364, 270, 150);
 
     //image(mapImage, 1152,0);
-
 }
 
 

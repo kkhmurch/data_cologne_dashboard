@@ -3,7 +3,7 @@ let rheinData,rheinPegel,font;
 let r = 4;
 
 
-function emmaPreload() {
+document.emmaPreload = function() {
     //Getting the Data on the water level of the Rhein
 
 
@@ -13,19 +13,19 @@ function emmaPreload() {
    // font = loadFont('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 }
 
-function emmaSetup() {
+document.emmaSetup = function() {
 
 
 //laalaalala
 // Extract water level of Rhein from response data.
 
     rheinPegel = rheinData.timeseries[0].currentMeasurement.value;
-    console.log("Water level:", rheinPegel);
+    //console.log("Water level:", rheinPegel);
 
 
 }
 
-    function emmaDraw() {
+    document.emmaDraw = function() {
 
         //My pixel space
         // line(768, 0, 768, 1080);

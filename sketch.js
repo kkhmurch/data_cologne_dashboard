@@ -8,11 +8,11 @@ function preload() {
   //dataPrep();
   //covidPreload();
   //peanutsPreload();
-  daytimePreload();
-  luftPreload();
-  emmaPreload();
+  document.daytimePreload();
+  document.luftPreload();
+  document.emmaPreload();
   weatherPreload();
-  raffaellaPreload();
+  document.raffaellaPreload();
   //test();
 
   mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
@@ -24,29 +24,33 @@ function preload() {
 function setup() {
 
   createCanvas(1920, 1080);
+  frameRate(60);
 
   //covidSetup();
   //peanutsSetup();
- // daytimeSetup();
- // luftSetup();
-  emmaSetup();
-  //weatherSetup();
- // raffaellaSetup();
+  document.daytimeSetup();
+  document.luftSetup();
+  document.emmaSetup();
+  weatherSetup();
+  document.raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
   textFont (mono_bold);
+  colorMode(RGB);
   background(0);
 
   //peanutsDraw();
   //covidDraw();
-  daytimeDraw();
-  luftDraw();
-  emmaDraw();
+  document.raffaellaDraw();
+  document.daytimeDraw();
+  document.luftDraw();
+  noFill();
+  colorMode(RGB);
+  document.emmaDraw();
   weatherDraw();
-  raffaellaDraw();
 }
 
 //function mouseClicked (){

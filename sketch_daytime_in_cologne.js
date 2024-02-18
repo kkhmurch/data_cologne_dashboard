@@ -23,16 +23,16 @@ class Circle{
 }
 
 
-function daytimePreload() {
+document.daytimePreload = function() {
   data  = loadTable('https://api.open-meteo.com/v1/dwd-icon?latitude=50.9333&longitude=6.95&daily=sunrise,sunset&timezone=Europe%2FBerlin&past_days=92&forecast_days=1&format=csv', 'csv', 'header');
 }
 
-function daytimeSetup() {
-  frameRate(2);
+document.daytimeSetup = function() {
   calculatedTimeDifferences();
 
 }
-function daytimeDraw() {
+document.daytimeDraw = function() {
+  push();
   //translate(1536, 810);
   translate(1670, 840);
   stroke(255);
@@ -97,7 +97,7 @@ function daytimeDraw() {
   text (timeInDays + " days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
     if (currentCircleIndex < dayTime.length - 4) {
-      r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
+      let r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
       noFill();
       colorMode(HSB);
       let h1 = 255;
@@ -127,6 +127,7 @@ function daytimeDraw() {
   //}
   //translate(-1536, -810);
   translate(-1670, -840);
+  pop();
 }
 
 function calculatedTimeDifferences() {
