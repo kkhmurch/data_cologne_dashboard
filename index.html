@@ -30,6 +30,7 @@
         <script src = "assets/weather_west_fix.js"></script>
         <script src = "weatherDataPreparationMalin.js"></script>
         <script src = "example.js"></script>
+        <script src = "exampleForecastAndCurrent.js"></script>
     <!-- ... and finally the main sketch file. -->
     <script src="sketch.js"></script>
 
@@ -72,7 +73,40 @@
         </div>
     </weather_box>
     <weather_box>
-        <div id="weather_table_back"></div>
+        <div id="weather_table_back">
+            <row class="time">
+                <i class="faketable">now</i>
+                <i class="faketable"></i>
+                <i class="faketable"></i>
+                <i class="faketable"></i>
+                <i class="faketable"></i>
+            </row>
+            <row class="temperature">
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+            </row>
+            <h3>temperature</h3>
+            <row class="clouds">
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+            </row>
+            <h3>cloud coverage</h3>
+            <row class="precipitation">
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+                <b class="faketable"></b>
+            </row>
+            <h3>precipitation</h3>
+            <h2>Weather Forecast</h2>
+        </div>
     </weather_box>
 </body>
 </html>

@@ -36,7 +36,7 @@ function setup() {
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
-  textFont (mono_light);
+  textFont (mono_bold);
   background(0);
 
   //peanutsDraw();
