@@ -1,7 +1,7 @@
 let trainingDataSet = [];
 
-const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
-const weatherDataCologne = data_cologne;
+//const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
+//const weatherDataCologne = data_cologne;
 
 function dataPrep() {
   //trainingDataSet = loadJSON('assets/training_dataset.json');
