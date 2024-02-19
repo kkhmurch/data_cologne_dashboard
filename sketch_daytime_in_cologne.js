@@ -96,8 +96,9 @@ document.daytimeDraw = function() {
       stroke(h1, s1, b1);
       let newCircle = new Circle(0, 0, 2 * r1);
       newCircle.draw();
-      currentCircleIndex = currentCircleIndex + 1;
-
+      if (frameCount % 30 == 0) {
+        currentCircleIndex = currentCircleIndex + 1;
+      }
       let textX = 0; // Define the x-coordinate for the text
       let textY = 0; // Define the y-coordinate for the text
       textAlign(CENTER, CENTER);
