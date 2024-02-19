@@ -3,6 +3,7 @@ body {
     padding: 0;
     background: #000;
     color: white;
+    font-family: 'PlexMono';
 }
 
 @font-face {
@@ -10,7 +11,7 @@ body {
     font-style: normal;
     font-weight: 300;
     font-display: swap;
-    src: url(/assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf);
+    src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQIwlBFgg.woff2) format('woff2');
 }
 
 @font-face {
@@ -18,7 +19,7 @@ body {
     font-style: normal;
     font-weight: 700;
     font-display: swap;
-    src: url(/assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf);
+    src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3pQPwlBFgg.woff2) format('woff2');
 }
 
 weather_box {

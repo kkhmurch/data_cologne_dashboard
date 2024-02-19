@@ -51,7 +51,8 @@ document.emmaSetup = function() {
             pop();
 
             fill(255);
-            textFont('Courier New', 15);
+            //textFont('Courier New', 15);
+            textSize(15);
             noStroke();
             text("the Rheins water level is currently " + rheinPegel + 'cm', 960, 1050);
 

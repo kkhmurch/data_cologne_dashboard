@@ -16,7 +16,8 @@ function preload() {
   //test();
 
   mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
-  mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
+  //mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
+  //mono_light = loadFont("https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQIwlBFgg.woff2");
 }
 
 // Called once when the program starts.
@@ -25,6 +26,7 @@ function setup() {
 
   createCanvas(1920, 1080);
   frameRate(60);
+  textFont(mono_light);
 
   //covidSetup();
   //peanutsSetup();
@@ -38,7 +40,6 @@ function setup() {
 // Called over and over to refresh your visualisation.
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
-  textFont (mono_bold);
   colorMode(RGB);
   background(0);
 

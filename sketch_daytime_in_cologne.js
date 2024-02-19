@@ -65,7 +65,7 @@ document.daytimeDraw = function() {
     //console.log(previousCircle);
 
   }
-  textFont('Courier New');
+  //textFont('Courier New');
   textSize(15);
   let textInnerRadX = x; // Define the x-coordinate for the text
   let textInnerRadY = radiusOfTheOuterCircle; // Define the y-coordinate for the text
