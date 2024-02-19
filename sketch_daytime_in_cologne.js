@@ -1,8 +1,8 @@
 
 let data;
 let dayTime =[];
-let innerRadius = 150;
-let outerRadius = 930;
+let innerRadius = 120;
+let outerRadius = 900;
 let currentCircleIndex = 48;
 let previousCircle = [];
 let r;
@@ -30,11 +30,13 @@ document.daytimePreload = function() {
 document.daytimeSetup = function() {
   calculatedTimeDifferences();
 
+
 }
 document.daytimeDraw = function() {
   push();
-  //translate(1536, 810);
-  translate(1670, 840);
+  //frameRate(10);
+
+  translate(1700, 880);
   stroke(255);
   noFill();
   ellipse(0, 0, outerRadius);
@@ -46,8 +48,9 @@ document.daytimeDraw = function() {
     r = map(dayTime[i][0], 475, 1020, innerRadius/2,outerRadius/2);
     noFill();
     colorMode(HSB);
-    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -170);
-    let s = 74;
+    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -60);
+    //let s = 74;
+    let s = 219;
     let b = 86;
     strokeWeight(1);
     stroke(h, s, b, 5);
@@ -70,22 +73,7 @@ document.daytimeDraw = function() {
   noStroke();
   fill(255);
 
-  // let valueToShow = dayTime[dayTime.length-1][0].toString();
-  // let textToShow = "duration of the sunlight today is : ";
-  // textToShow = textToShow.split("");
-  // textToShow.push(valueToShow);
-  // console.log(textToShow);
-  // let textAngle = TWO_PI/3*textToShow.length;
-  // console.log(textAngle);
-  // let textRadius = -radiusOfTheOuterCircle/2 -20;
-  // console.log(textRadius);
-  // for (let i = 0; i < textToShow.length; i++) {
-  //   let x = textRadius * cos(-HALF_PI + i * textAngle);
-  //   let y = textRadius * sin(-HALF_PI + i * textAngle);
-  //   console.log(x);
-  //   console.log(y);
-  //   text(textToShow[i], x, y);
-  // }
+
   var today = new Date();
   var date_to_reply = new Date('2024-06-22');
   var timeinmilisec = date_to_reply.getTime() - today.getTime();
@@ -96,6 +84,7 @@ document.daytimeDraw = function() {
   text( "duration of the sunlight today: "+hours + " h " + minutes + " min", textInnerRadX, - textInnerRadY -20);
   text (timeInDays + " days till the longest day in the year", textInnerRadX, -outerRadius/2 - 20);
    //while(true) {
+  //if (frameCount % 30 == 0) {
     if (currentCircleIndex < dayTime.length - 4) {
       let r1 = map(dayTime[currentCircleIndex][0], 475, 1020, innerRadius/2, outerRadius/2);
       noFill();
@@ -107,8 +96,9 @@ document.daytimeDraw = function() {
       stroke(h1, s1, b1);
       let newCircle = new Circle(0, 0, 2 * r1);
       newCircle.draw();
-      currentCircleIndex = currentCircleIndex + 1;
-
+      if (frameCount % 30 == 0) {
+        currentCircleIndex = currentCircleIndex + 1;
+      }
       let textX = 0; // Define the x-coordinate for the text
       let textY = 0; // Define the y-coordinate for the text
       textAlign(CENTER, CENTER);
@@ -126,7 +116,7 @@ document.daytimeDraw = function() {
      }
   //}
   //translate(-1536, -810);
-  translate(-1670, -840);
+  translate(-1700, -880);
   pop();
 }
 
