@@ -106,7 +106,7 @@ for(let i=0;i<partsD.length; i++) {
 
 fill(0, 50, 86);
 noStroke();
-textFont('Courier New');
+//textFont('Courier New');
 textSize(16);
 text("Luftqualität in Köln", 50,600);
 fill(0, 50, 86);
