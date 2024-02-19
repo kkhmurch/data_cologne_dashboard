@@ -1,8 +1,8 @@
 
 let data;
 let dayTime =[];
-let innerRadius = 150;
-let outerRadius = 930;
+let innerRadius = 120;
+let outerRadius = 900;
 let currentCircleIndex = 48;
 let previousCircle = [];
 let r;
@@ -34,7 +34,7 @@ document.daytimeSetup = function() {
 document.daytimeDraw = function() {
   push();
   //translate(1536, 810);
-  translate(1670, 840);
+  translate(1700, 880);
   stroke(255);
   noFill();
   ellipse(0, 0, outerRadius);
@@ -46,8 +46,9 @@ document.daytimeDraw = function() {
     r = map(dayTime[i][0], 475, 1020, innerRadius/2,outerRadius/2);
     noFill();
     colorMode(HSB);
-    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -170);
-    let s = 74;
+    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -60);
+    //let s = 74;
+    let s = 219;
     let b = 86;
     strokeWeight(1);
     stroke(h, s, b, 5);
@@ -126,7 +127,7 @@ document.daytimeDraw = function() {
      }
   //}
   //translate(-1536, -810);
-  translate(-1670, -840);
+  translate(-1700, -880);
   pop();
 }
 
