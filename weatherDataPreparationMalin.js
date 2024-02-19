@@ -357,21 +357,19 @@ function train(trainingData) {
   console.log("let's-a-go!");
 
   const net = new brain.NeuralNetwork({
-    activation: 'sigmoid', // activation function
-    hiddenLayers: [128, 128, 128, 128, 128, 128, 128, 128]
+    activation: 'relu', // activation function
+    hiddenLayers: [64]
   });
 
-  for (var i = 0; i < 2000; i++) {
-    net.train(trainingData, {
-      learningRate: 0.0005,
-      iterations: 1,
-      errorThresh: 0.005,
-      log: true,
-      logPeriod: 1,
-    });
+  net.train(trainingData, {
+    learningRate: 1e-3,
+    iterations: 1,
+    errorThresh: 0.005,
+    log: true,
+    logPeriod: 1,
+  });
 
     console.log('iteration ' + i);
     const networkState = net.toJSON();
-    saveJSON(networkState, 'assets/network_state' + i + '.json');
-  }
+    saveJSON(networkState, 'assets/network_state.json');
 }
