@@ -352,24 +352,37 @@ function prepCurrentInputData() {
   currentInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
 }
 
-
-function train(trainingData) {
+let runningNet;
+let trainedNet;
+let weightArray = [];
+let biasesArray = [];
+function assembleNet() {
   console.log("let's-a-go!");
 
-  const net = new brain.NeuralNetwork({
+  runningNet = new brain.NeuralNetwork({
     activation: 'relu', // activation function
-    hiddenLayers: [64]
+    hiddenLayers: [64, 64, 64, 64, 64, 64]
   });
 
-  net.train(trainingData, {
-    learningRate: 1e-3,
-    iterations: 1,
-    errorThresh: 0.005,
-    log: true,
-    logPeriod: 1,
-  });
+  trainedNet = loadJSON("/assets/modelS2_fix.json");
 
-    console.log('iteration ' + i);
-    const networkState = net.toJSON();
-    saveJSON(networkState, 'assets/network_state.json');
+  weightArray[1] = trainedNet.linear_relu_stack_0_weight;
+  weightArray[2] = trainedNet.linear_relu_stack_2_weight;
+  weightArray[3] = trainedNet.linear_relu_stack_4_weight;
+  weightArray[4] = trainedNet.linear_relu_stack_6_weight;
+  weightArray[5] = trainedNet.linear_relu_stack_8_weight;
+  weightArray[6] = trainedNet.linear_relu_stack_10_weight;
+  weightArray[7] = trainedNet.linear_relu_stack_12_weight;
+
+  runningNet.weights = weightArray;
+  
+  biasesArray[1] = trainedNet.linear_relu_stack_0_bias;
+  biasesArray[2] = trainedNet.linear_relu_stack_2_bias;
+  biasesArray[3] = trainedNet.linear_relu_stack_4_bias;
+  biasesArray[4] = trainedNet.linear_relu_stack_6_bias;
+  biasesArray[5] = trainedNet.linear_relu_stack_8_bias;
+  biasesArray[6] = trainedNet.linear_relu_stack_10_bias;
+  biasesArray[7] = trainedNet.linear_relu_stack_12_bias;
+
+  runningNet.biases = biasesArray;
 }

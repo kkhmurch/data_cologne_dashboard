@@ -1,5 +1,6 @@
 let mono_light;
 let mono_bold;
+let nn;
 
 // Called once when the program starts just before setup().
 // Use this to load external data, i.e. make your API calls here.
@@ -11,9 +12,11 @@ function preload() {
   //document.emmaPreload();
   //weatherPreload();
   //document.raffaellaPreload();
-  //test();
+  test();
+  
+  assembleNet();
 
-  mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
+  //mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
   //mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
   //mono_light = loadFont("https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQIwlBFgg.woff2");
 }
@@ -24,7 +27,7 @@ function setup() {
 
   createCanvas(1920, 1080);
   frameRate(60);
-  textFont(mono_light);
+  //textFont(mono_light);
   
   //document.daytimeSetup();
   //document.luftSetup();
