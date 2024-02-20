@@ -55,7 +55,8 @@ document.raffaellaDraw = function() {
 
 
         if (uvIndex[i] == 0){
-             fill(70,168,164);
+            //fill(70,168,164);
+            fill(105,201,214);
         }
         else if(uvIndex[i] < 0.3){
             fill(69,168,141);
@@ -67,6 +68,7 @@ document.raffaellaDraw = function() {
             fill(73,189,107);
         }
         else if(uvIndex[i] < 1.3){
+
             fill(80,207,85);
         }
         else if(uvIndex[i] < 1.7){
@@ -78,8 +80,51 @@ document.raffaellaDraw = function() {
         else if(uvIndex[i] < 2.5){
             fill(212,219,81);
         }
+        else if(uvIndex[i] < 3){
+            fill(228,235,121);
+        }
+        else if(uvIndex[i] < 3.5){
+            fill(236,237,125);
+        }
+        else if(uvIndex[i] < 4){
+            fill(249,250,131);
+        }
+        else if(uvIndex[i] < 4.5){
+            fill(250,239,122);
+        }
+        else if(uvIndex[i] < 5){
+            fill(252,241,123);
+        }
+        //
+        else if(uvIndex[i] < 5.5){
+            fill(252,236,98);
+        }
+        else if(uvIndex[i] < 6){
+            fill(255,238,99);
+        }
+        else if(uvIndex[i] < 6.5){
+            fill(255,246,72);
+        }
+        else if(uvIndex[i] < 7){
+            fill(255,216,97);
+        }
+        else if(uvIndex[i] < 7.5){
+            fill(255,193,96);
+        }
+        else if(uvIndex[i] < 8){
+            fill(255,188,93);
+        }
+        else if(uvIndex[i] < 8.5){
+            fill(255, 168, 91);
+        }
+        else if(uvIndex[i] < 9){
+            fill(255, 133, 85);
+        }
+        else if(uvIndex[i] < 9.5){
+            fill(255,90, 78);
+        }
         else{
-            fill(219,184,77);
+            fill(175, 74, 88);
         }
         stroke(0);
 
