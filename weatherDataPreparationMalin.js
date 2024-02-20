@@ -356,6 +356,7 @@ let runningNet;
 let trainedNet;
 let weightArray = [];
 let biasesArray = [];
+let output = [];
 function assembleNet() {
   console.log("let's-a-go!");
 
@@ -385,4 +386,12 @@ function assembleNet() {
   biasesArray[7] = trainedNet.linear_relu_stack_12_bias;
 
   runningNet.biases = biasesArray;
+
+  let sizesArray = [15, 64, 64, 64, 64, 64, 64, 12];
+
+  runningNet.sizes = sizesArray;
+  runningNet.outputLayer = 1;
+
+  output = runningNet.run(currentInputData);
+  console.log(output);
 }

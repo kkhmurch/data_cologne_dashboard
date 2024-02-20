@@ -15,7 +15,7 @@ function weatherPreload() {
 }
 
 function weatherSetup() {
-  //prepCurrentInputData();
+  prepCurrentInputData();
 
     let inner1 = [11, 0, 0];
     let inner2 = [12, 0, 0];

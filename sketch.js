@@ -10,7 +10,7 @@ function preload() {
   //document.daytimePreload();
   //document.luftPreload();
   //document.emmaPreload();
-  //weatherPreload();
+  weatherPreload();
   //document.raffaellaPreload();
   test();
   
@@ -32,7 +32,7 @@ function setup() {
   //document.daytimeSetup();
   //document.luftSetup();
   //document.emmaSetup();
-  //weatherSetup();
+  weatherSetup();
   //document.raffaellaSetup();
 }
 
@@ -50,7 +50,7 @@ function draw() {
   noFill();
   colorMode(RGB);
   //document.emmaDraw();
-  //weatherDraw();
+  weatherDraw();
 }
 
 //function mouseClicked (){
