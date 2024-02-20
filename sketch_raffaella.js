@@ -28,6 +28,7 @@ document.raffaellaSetup = function() {
     //print("API data: ");
     //print(JSON.stringify(uvResponseData, undefined, 2));
 
+
 }
 
 document.raffaellaDraw = function() {
@@ -84,10 +85,15 @@ document.raffaellaDraw = function() {
 
         let x = 1240 + i * dimensionX ;
         let y;
-        if(currentHour == hour ){
 
-            y = 250 + random(-15,15);
+        if (currentHour == hour) {
+
+            //*if (frameCount % 30 == 0) {
+                y = 250 + random(-15, 15) ;
+            //}
+
         }
+
         else {
             y = 230;
         }
