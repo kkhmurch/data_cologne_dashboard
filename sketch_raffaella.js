@@ -29,6 +29,10 @@ document.raffaellaSetup = function() {
     //print(JSON.stringify(uvResponseData, undefined, 2));
 }
 
+var y1 = 270;
+var speed = 1.0; // speed
+var direct = 1; //direction of movement
+
 document.raffaellaDraw = function() {
 
     background(0);
@@ -45,10 +49,6 @@ document.raffaellaDraw = function() {
     var time = uvResponseData.hourly.time;
     let dimensionX = 400 / time.length + 5;
     var uvIndex = uvResponseData.hourly.uv_index_clear_sky;
-
-    let currenColor;
-
-
 
 
     for(var i = 0; i < time.length; i++){
@@ -88,25 +88,33 @@ document.raffaellaDraw = function() {
         const hour = date.getHours();
 
         let x = 1240 + i * dimensionX ;
-        let y;
-
-        if(currentHour == hour ){
-            //if(frameCount % 60 == 0){
-                y = 270 + random(-15,15);
-            //}
+        let y = 270;
 
 
-            //y = 270 + random(-15,15);
+        if(currentHour == i){
+
+            y1 += speed * direct ;// velocity // y = y plus speed   *  direction
+            if ((y1 > 285)  || ( y1 < 255)) {
+                direct = - direct;  //change direction
+            }
+
+            circle(x + 10, y1,  dimensionX + 55, 500);
+            textSize(13);
+            textFont(mono_bold);
+            text(hour, x - 10, y1 + 100);
         }
         else {
-            y = 270;
+            circle(x + 10, y,  dimensionX + 55, 500);
+            textSize(13);
+            textFont(mono_bold);
+            text(hour, x - 10, y + 100);
         }
 
 
-        circle(x + 10, y,  dimensionX + 55, 500);
-        textSize(13);
-        textFont(mono_bold);
-        text(hour, x - 10, y + 100);
+        //circle(x + 10, y,  dimensionX + 55, 500);
+        //textSize(13);
+        //textFont(mono_bold);
+        //text(hour, x - 10, y + 100);
 
 
     }
