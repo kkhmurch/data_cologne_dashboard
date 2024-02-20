@@ -27,6 +27,7 @@ document.raffaellaSetup = function() {
     print(uvRealTime);*/
     //print("API data: ");
     //print(JSON.stringify(uvResponseData, undefined, 2));
+
 }
 
 document.raffaellaDraw = function() {
@@ -41,7 +42,7 @@ document.raffaellaDraw = function() {
     //console.log(timestamp);
 
     var time = uvResponseData.hourly.time;
-    let dimensionX = 400 / time.length;
+    let dimensionX = 400 / time.length + 5;
     var uvIndex = uvResponseData.hourly.uv_index_clear_sky;
 
 
@@ -81,25 +82,29 @@ document.raffaellaDraw = function() {
         const date = new Date(timeString);
         const hour = date.getHours();
 
-        let x = 1350 + i * dimensionX ;
+        let x = 1240 + i * dimensionX ;
         let y;
         if(currentHour == hour ){
 
-            y = 270 + random(-15,15);
+            y = 250 + random(-15,15);
         }
         else {
-            y = 270;
+            y = 230;
         }
-        circle(x, y,  dimensionX + 60, 500, 30, 30 ,30 ,30);
+        circle(x + 10, y,  dimensionX + 55, 500);
+        textSize(13);
+        textFont(mono_bold);
         text(hour, x - 10, y + 100);
 
         //ellipse(1152/2, 768/2, 1152)
         //text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
     }
-
-    text(currentDate, 1350, 150)
+    textSize(15);
+    textFont(mono_bold);
+    text(currentDate, 1190, 150)
     textSize(30);
-    text("UV-Index / Köln", 1450, 90);
+    textFont(mono_bold);
+    text("UV-Index / Köln", 1350, 90);
     textSize(12);
 
     stroke(0);
