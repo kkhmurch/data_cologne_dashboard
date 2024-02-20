@@ -27,14 +27,14 @@ document.raffaellaSetup = function() {
     print(uvRealTime);*/
     //print("API data: ");
     //print(JSON.stringify(uvResponseData, undefined, 2));
-
-
 }
 
 document.raffaellaDraw = function() {
 
     background(0);
     strokeWeight(10);
+
+    stroke(0,0,0, 30)
 
     var currentHour = new Date().getHours();
     //console.log(currentHour);
@@ -46,12 +46,16 @@ document.raffaellaDraw = function() {
     let dimensionX = 400 / time.length + 5;
     var uvIndex = uvResponseData.hourly.uv_index_clear_sky;
 
+    let currenColor;
+
+
+
 
     for(var i = 0; i < time.length; i++){
 
 
         if (uvIndex[i] == 0){
-            fill(70,168,164);
+             fill(70,168,164);
         }
         else if(uvIndex[i] < 0.3){
             fill(69,168,141);
@@ -86,30 +90,33 @@ document.raffaellaDraw = function() {
         let x = 1240 + i * dimensionX ;
         let y;
 
-        if (currentHour == hour) {
-
-            //*if (frameCount % 30 == 0) {
-                y = 250 + random(-15, 15) ;
+        if(currentHour == hour ){
+            //if(frameCount % 60 == 0){
+                y = 270 + random(-15,15);
             //}
 
+
+            //y = 270 + random(-15,15);
+        }
+        else {
+            y = 270;
         }
 
-        else {
-            y = 230;
-        }
+
         circle(x + 10, y,  dimensionX + 55, 500);
         textSize(13);
         textFont(mono_bold);
         text(hour, x - 10, y + 100);
 
-        //ellipse(1152/2, 768/2, 1152)
-        //text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
+
     }
     textSize(15);
     textFont(mono_bold);
+    fill(70,168,164);
     text(currentDate, 1190, 150)
     textSize(30);
     textFont(mono_bold);
+    fill(70,168,164);
     text("UV-Index / Köln", 1350, 90);
     textSize(12);
 
