@@ -48,7 +48,7 @@ document.daytimeDraw = function() {
     r = map(dayTime[i][0], 475, 1020, innerRadius/2,outerRadius/2);
     noFill();
     colorMode(HSB);
-    let h = map(r, innerRadius / 2, outerRadius / 2, 46, -60);
+    let h = map(r, innerRadius / 2, outerRadius / 2, 57, -60);
     //let s = 74;
     let s = 219;
     let b = 86;
