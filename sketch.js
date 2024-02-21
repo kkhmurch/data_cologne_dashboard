@@ -14,7 +14,7 @@ function preload() {
   //document.raffaellaPreload();
   test();
   
-  assembleNet();
+  trainedNet = loadJSON("/assets/modelS2_fix.json");
 
   //mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
   //mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
@@ -33,6 +33,7 @@ function setup() {
   //document.luftSetup();
   //document.emmaSetup();
   weatherSetup();
+  assembleNet();
   //document.raffaellaSetup();
 }
 

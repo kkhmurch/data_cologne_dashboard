@@ -365,7 +365,6 @@ function assembleNet() {
     hiddenLayers: [64, 64, 64, 64, 64, 64]
   });
 
-  trainedNet = loadJSON("/assets/modelS2_fix.json");
 
   weightArray[1] = trainedNet.linear_relu_stack_0_weight;
   weightArray[2] = trainedNet.linear_relu_stack_2_weight;
@@ -390,8 +389,9 @@ function assembleNet() {
   let sizesArray = [15, 64, 64, 64, 64, 64, 64, 12];
 
   runningNet.sizes = sizesArray;
-  runningNet.outputLayer = 1;
+  runningNet.outputs = [];
 
-  output = runningNet.run(currentInputData);
+  runningNet.run(currentInputData);
+  output = runningNet.outputs;
   console.log(output);
 }
