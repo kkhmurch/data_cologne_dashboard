@@ -85,42 +85,46 @@ document.luftDraw = function() {
 
 
 for(let i=0;i<partsA.length; i++) {
-   fill(199, 26, 86,(map(i, 0, partsA.length, 0, 100)));
+   fill(57, 72, 100,(map(i, 0, partsA.length, 0, 100)));
    partsA[i].zeichneParts();
 }
 
 for(let i=0;i<partsB.length; i++) {
-    fill(252,21,86,(map(i,3, partsB.length, 0,100)));
+    fill(187,51,84,(map(i,3, partsB.length, 0,100)));
     partsB[i].zeichneParts();
 }
 
 for(let i=0;i<partsC.length; i++) {
-    fill(342,31,86,(map(i,3, partsC.length, 0,100)));
+    fill(153,52,81,(map(i,3, partsC.length, 0,100)));
     partsC[i].zeichneParts();
 }
 
 for(let i=0;i<partsD.length; i++) {
-    fill(54,36,86,(map(i,3, partsD.length, 0,100)));
+    fill(352,58,69,(map(i,3, partsD.length, 0,100)));
     partsD[i].zeichneParts();
 }
 
-fill(0, 50, 86);
+fill(0,0,100);
 noStroke();
 //textFont('Courier New');
+textSize(25);
+text("Air quality in Cologne", 50,600);
+textSize(12);
+fill(0, 0, 100);
+text("measured in the last 30 minutes:", 50,630);
 textSize(16);
-text("Luftqualität in Köln", 50,600);
-fill(0, 50, 86);
-text("gemessen in den letzten 30 Minuten:", 50,630);
-fill(199, 26, 86);
-text ("Stickstoffmonoxid (NO): " + luftColumnA  [3]+ " µg/m³", 50, 660);
-fill(252,21,86);
-text ("Stickstoffdioxid (NO2): " + luftColumnB [3]+ " µg/m³", 50, 690);
-fill(342,31,86);
-text ("Ozon(O3): "+ luftColumnB[3]+ " µg/m³", 50, 720);
-fill(0,50,86);
-text("gemessen in den letzten 24 Stunden:", 50,750);
-fill(54,36,86);
-text ("Schwebstaub (PM10F): "+ luftColumnD[3]+ " µg/m³", 50, 780);
+fill(57, 72, 100);
+text ("Nitric oxide (NO): " + luftColumnA  [3]+ " µg/m³", 50, 660);
+fill(187,51,84);
+text ("Nitrogen dioxide (NO2): " + luftColumnB [3]+ " µg/m³", 50, 690);
+fill(153,52,81);
+text ("Ozone(O3): "+ luftColumnB[3]+ " µg/m³", 50, 720);
+fill(0,0,100);
+textSize(12);
+text("measured in the last 24 hours:", 50,750);
+    textSize(16);
+fill(352,58,69);
+text ("Suspended dust (PM10F): "+ luftColumnD[3]+ " µg/m³", 50, 780);
 
 //text("Ozon:"+ LuftColumn)
 
