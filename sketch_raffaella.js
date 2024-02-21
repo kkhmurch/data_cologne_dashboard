@@ -170,7 +170,7 @@ document.raffaellaDraw = function() {
     textSize(30);
     textFont(mono_bold);
     fill(70,168,164);
-    text("UV-Index / Köln", 1350, 90);
+    text("UV-Index / Cologne", 1350, 90);
     textSize(12);
 
     stroke(0);
