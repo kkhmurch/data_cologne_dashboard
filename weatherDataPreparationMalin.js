@@ -1,4 +1,4 @@
-let trainingDataSet = [];
+//let trainingDataSet = [];
 
 //const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
 //const weatherDataCologne = data_cologne;
@@ -349,23 +349,18 @@ function prepCurrentInputData() {
 
   let year = (date[0] - 1900) / 200;
 
-  currentInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
+  currentWeatherInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
 }
 
-let runningNet;
-let trainedNet;
-let weightArray = [];
-let biasesArray = [];
-let output = [];
-function assembleNet() {
+function runNetwork() {
   console.log("let's-a-go!");
 
-  runningNet = new brain.NeuralNetwork({
+  let runningNet = new brain.NeuralNetwork({
     activation: 'relu', // activation function
     hiddenLayers: [64, 64, 64, 64, 64, 64]
   });
-
-
+  
+  let weightArray = [];
   weightArray[1] = trainedNet.linear_relu_stack_0_weight;
   weightArray[2] = trainedNet.linear_relu_stack_2_weight;
   weightArray[3] = trainedNet.linear_relu_stack_4_weight;
@@ -376,6 +371,7 @@ function assembleNet() {
 
   runningNet.weights = weightArray;
   
+  let biasesArray = [];
   biasesArray[1] = trainedNet.linear_relu_stack_0_bias;
   biasesArray[2] = trainedNet.linear_relu_stack_2_bias;
   biasesArray[3] = trainedNet.linear_relu_stack_4_bias;
@@ -391,7 +387,7 @@ function assembleNet() {
   runningNet.sizes = sizesArray;
   runningNet.outputs = [];
 
-  runningNet.run(currentInputData);
-  output = runningNet.outputs;
-  console.log(output);
+  runningNet.run(currentWeatherInputData);
+  aiForecast = runningNet.outputs;
+  console.log(aiForecast);
 }

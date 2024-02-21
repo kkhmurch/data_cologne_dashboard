@@ -1,6 +1,5 @@
 let mono_light;
 let mono_bold;
-let nn;
 
 // Called once when the program starts just before setup().
 // Use this to load external data, i.e. make your API calls here.
@@ -12,9 +11,7 @@ function preload() {
   //document.emmaPreload();
   weatherPreload();
   //document.raffaellaPreload();
-  test();
-  
-  trainedNet = loadJSON("/assets/modelS2_fix.json");
+  //test();
 
   //mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
   //mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
@@ -33,7 +30,6 @@ function setup() {
   //document.luftSetup();
   //document.emmaSetup();
   weatherSetup();
-  assembleNet();
   //document.raffaellaSetup();
 }
 
