@@ -1,5 +1,8 @@
 var mapImage;
 let uvResponseData;
+const options = { year: 'numeric', month: 'long', day: 'numeric',hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',timeZoneName: 'long' };
 
 document.raffaellaPreload = function() {
     /*var myHeaders = new Headers();
@@ -29,10 +32,16 @@ document.raffaellaSetup = function() {
     //print(JSON.stringify(uvResponseData, undefined, 2));
 }
 
+var y1 = 270;
+var speed = 1.0; // speed
+var direct = 1; //direction of movement
+
 document.raffaellaDraw = function() {
 
     background(0);
     strokeWeight(10);
+
+    stroke(0,0,0, 30)
 
     var currentHour = new Date().getHours();
     //console.log(currentHour);
@@ -41,7 +50,7 @@ document.raffaellaDraw = function() {
     //console.log(timestamp);
 
     var time = uvResponseData.hourly.time;
-    let dimensionX = 400 / time.length;
+    let dimensionX = 400 / time.length + 5;
     var uvIndex = uvResponseData.hourly.uv_index_clear_sky;
 
 
@@ -49,7 +58,8 @@ document.raffaellaDraw = function() {
 
 
         if (uvIndex[i] == 0){
-            fill(70,168,164);
+            //fill(70,168,164);
+            fill(105,201,214);
         }
         else if(uvIndex[i] < 0.3){
             fill(69,168,141);
@@ -61,6 +71,7 @@ document.raffaellaDraw = function() {
             fill(73,189,107);
         }
         else if(uvIndex[i] < 1.3){
+
             fill(80,207,85);
         }
         else if(uvIndex[i] < 1.7){
@@ -72,8 +83,51 @@ document.raffaellaDraw = function() {
         else if(uvIndex[i] < 2.5){
             fill(212,219,81);
         }
+        else if(uvIndex[i] < 3){
+            fill(228,235,121);
+        }
+        else if(uvIndex[i] < 3.5){
+            fill(236,237,125);
+        }
+        else if(uvIndex[i] < 4){
+            fill(249,250,131);
+        }
+        else if(uvIndex[i] < 4.5){
+            fill(250,239,122);
+        }
+        else if(uvIndex[i] < 5){
+            fill(252,241,123);
+        }
+        //
+        else if(uvIndex[i] < 5.5){
+            fill(252,236,98);
+        }
+        else if(uvIndex[i] < 6){
+            fill(255,238,99);
+        }
+        else if(uvIndex[i] < 6.5){
+            fill(255,246,72);
+        }
+        else if(uvIndex[i] < 7){
+            fill(255,216,97);
+        }
+        else if(uvIndex[i] < 7.5){
+            fill(255,193,96);
+        }
+        else if(uvIndex[i] < 8){
+            fill(255,188,93);
+        }
+        else if(uvIndex[i] < 8.5){
+            fill(255, 168, 91);
+        }
+        else if(uvIndex[i] < 9){
+            fill(255, 133, 85);
+        }
+        else if(uvIndex[i] < 9.5){
+            fill(255,90, 78);
+        }
         else{
-            fill(219,184,77);
+            fill(175, 74, 88);
         }
         stroke(0);
 
@@ -81,25 +135,47 @@ document.raffaellaDraw = function() {
         const date = new Date(timeString);
         const hour = date.getHours();
 
-        let x = 1350 + i * dimensionX ;
-        let y;
-        if(currentHour == hour ){
+        let x = 1240 + i * dimensionX ;
+        let y = 270;
 
-            y = 270 + random(-15,15);
+
+        if(currentHour == i){
+
+            y1 += speed * direct ;// velocity // y = y plus speed   *  direction
+            if ((y1 > 285)  || ( y1 < 255)) {
+                direct = - direct;  //change direction
+            }
+
+            circle(x + 10, y1,  dimensionX + 55, 500);
+            textSize(13);
+            textFont(mono_bold);
+            text(hour, x - 10, y1 + 100);
         }
         else {
-            y = 270;
+            circle(x + 10, y,  dimensionX + 55, 500);
+            textSize(13);
+            textFont(mono_bold);
+            text(hour, x - 10, y + 100);
         }
-        circle(x, y,  dimensionX + 60, 500, 30, 30 ,30 ,30);
-        text(hour, x - 10, y + 100);
 
-        //ellipse(1152/2, 768/2, 1152)
-        //text(uvResponseData.hourly.time[i], 1200, 50 + i * 20);
+
+        //circle(x + 10, y,  dimensionX + 55, 500);
+        //textSize(13);
+        //textFont(mono_bold);
+        //text(hour, x - 10, y + 100);
+
+
     }
-
-    text(currentDate, 1350, 150)
+    textSize(15);
+    textFont(mono_bold);
+    fill(70,168,164);
+    //text(currentDate, 1190, 150)
+    //console.log(currentDate);
+    text(currentDate.toLocaleDateString('en-EN', options), 1200, 150);
     textSize(30);
-    text("UV-Index / Köln", 1450, 90);
+    textFont(mono_bold);
+    fill(70,168,164);
+    text("UV-Index / Cologne", 1350, 90);
     textSize(12);
 
     stroke(0);
