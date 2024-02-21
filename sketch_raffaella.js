@@ -37,8 +37,6 @@ var speed = 1.0; // speed
 var direct = 1; //direction of movement
 
 document.raffaellaDraw = function() {
-
-    background(0);
     strokeWeight(10);
 
     stroke(0,0,0, 30)

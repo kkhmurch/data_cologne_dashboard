@@ -351,13 +351,15 @@ function prepCurrentInputData() {
 
   currentWeatherInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
 }
-
+let runningNet;
 function runNetwork() {
   console.log("let's-a-go!");
 
-  let runningNet = new brain.NeuralNetwork({
+  runningNet = new brain.NeuralNetwork({
     activation: 'relu', // activation function
-    hiddenLayers: [64, 64, 64, 64, 64, 64]
+    hiddenLayers: [64, 64, 64, 64, 64, 64],
+    inputSize: 15,
+    outputSize: 12
   });
   
   let weightArray = [];
@@ -385,9 +387,13 @@ function runNetwork() {
   let sizesArray = [15, 64, 64, 64, 64, 64, 64, 12];
 
   runningNet.sizes = sizesArray;
-  runningNet.outputs = [];
+  let outputArray = [];
+  for (let i = 0; i < 8; i++)
+    outputArray[i] = [];
 
-  runningNet.run(currentWeatherInputData);
-  aiForecast = runningNet.outputs;
+  runningNet.outputs = outputArray;
+  runningNet.outputLayer = 7;
+
+  aiForecast = runningNet.run(currentWeatherInputData);
   console.log(aiForecast);
 }

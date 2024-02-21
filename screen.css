@@ -47,7 +47,6 @@ div#weather_table
   transform-style: preserve-3d;
   transform: rotateY(0deg);
   backface-visibility: hidden;
-  opacity: 1;
 }
 
 div#weather_table_back
@@ -65,7 +64,6 @@ div#weather_table_back
   transform-style: preserve-3d;
   transform: rotateY(180deg);
   backface-visibility: hidden;
-  opacity: 1;
 }
 
 .faketable

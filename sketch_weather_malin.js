@@ -42,22 +42,27 @@ function weatherSetup() {
     if (i > 0) {
       timeElements.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
       timeElementsBack.item(i).innerHTML = (currentTime + i * 3) % 24 + ':00';
-      temperatureElements.item(i).innerHTML = round((aiForecast[0][i * 3] * 100) - 50) + '°C';
+
+      temperatureElements.item(i).innerHTML = round(aiForecast[(i - 1) * 3] * 100 - 50) + '°C';
       temperatureElementsBack.item(i).innerHTML = round(currentWeatherData.hourly.temperature_2m[currentTime + i * 3]) + '°C';
-      cloudElements.item(i).innerHTML = round(aiForecast[0][2 + i * 3] * 100) + '%';
+
+      cloudElements.item(i).innerHTML = round(aiForecast[(i - 1) * 3 + 2] * 100) + '%';
       cloudElementsBack.item(i).innerHTML = currentWeatherData.hourly.cloud_cover[currentTime + i * 3] + '%';
-      precipitationElements.item(i).innerHTML = round(aiForecast[0][1 + i * 3] * 1000) + 'mm';
+
+      precipitationElements.item(i).innerHTML = round(aiForecast[(i - 1) * 3 + 1] * 1000) + 'mm';
       precipitationElementsBack.item(i).innerHTML = round(currentWeatherData.hourly.precipitation[currentTime + i * 3]) + 'mm';
     }
     else {
       temperatureElements.item(i).innerHTML = round(currentWeatherData.current.temperature_2m) + '°C';
       temperatureElementsBack.item(i).innerHTML = round(currentWeatherData.current.temperature_2m) + '°C';
+
       cloudElements.item(i).innerHTML = currentWeatherData.current.cloud_cover + '%';
       cloudElementsBack.item(i).innerHTML = currentWeatherData.current.cloud_cover + '%';
+
       precipitationElements.item(i).innerHTML = round(currentWeatherData.current.precipitation) + 'mm';
       precipitationElementsBack.item(i).innerHTML = round(currentWeatherData.current.precipitation) + 'mm';
     }
-  }  
+  }
 }
 
 const animationStart = 100;
@@ -72,9 +77,6 @@ function weatherDraw() {
 }
 
 function flipWeatherBox() {
-  elementBackWeatherTable.style.opacity = 1;
-  elementBackWeatherTable.style.opacity = 1;
-
   elementWeahterTable.style.transform = "rotateY(" + sin(animationVar) * -180 + "deg)";
   elementBackWeatherTable.style.transform = "rotateY(" + (sin(animationVar) * -180 + 180) + "deg)";
 
@@ -91,9 +93,6 @@ function flipWeatherBox() {
 }
 
 function flipWeatherBoxBack() {
-  elementWeahterTable.style.opacity = 1;
-  elementBackWeatherTable.style.opacity = 1;
-
   elementWeahterTable.style.transform = "rotateY(" + (sin(animationVar) * 180 + 180) + "deg)";
   elementBackWeatherTable.style.transform = "rotateY(" + sin(animationVar) * 180 + "deg)";
 

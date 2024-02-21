@@ -34,7 +34,7 @@ function setup() {
 // See https://p5js.org/reference/#/p5/draw
 function draw() {
   colorMode(RGB);
-  background(0);
+  background(4, 4, 4);
 
   document.raffaellaDraw();
   document.daytimeDraw();
