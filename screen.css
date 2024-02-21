@@ -36,7 +36,7 @@ div#weather_table
 {
   width: calc(768px - var(--paddingX) * 2 - var(--margin) * 2);
   height: calc(540px - var(--paddingY) * 2 - var(--margin) * 2);
-  background: #0E0E0E;
+  background: #0E0E0EC7;
   --margin: 20pt;
   margin: var(--margin);
   border-radius: 20px;
@@ -53,7 +53,7 @@ div#weather_table_back
 {
   width: calc(768px - var(--paddingX) * 2 - var(--margin) * 2);
   height: calc(540px - var(--paddingY) * 2 - var(--margin) * 2);
-  background: #0E0E0E;
+  background: #0E0E0EC7;
   --margin: 20pt;
   margin: var(--margin);
   border-radius: 20px;

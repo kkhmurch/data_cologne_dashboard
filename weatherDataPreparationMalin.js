@@ -351,11 +351,11 @@ function prepCurrentInputData() {
 
   currentWeatherInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
 }
-let runningNet;
+
 function runNetwork() {
   console.log("let's-a-go!");
 
-  runningNet = new brain.NeuralNetwork({
+  let runningNet = new brain.NeuralNetwork({
     activation: 'relu', // activation function
     hiddenLayers: [64, 64, 64, 64, 64, 64],
     inputSize: 15,
