@@ -1,4 +1,4 @@
-let trainingDataSet = [];
+//let trainingDataSet = [];
 
 //const weatherData = [data_cologne, data_northWest, data_north, data_northEast, data_west, data_east, data_southWest, data_south, data_southEast];
 //const weatherDataCologne = data_cologne;
@@ -349,29 +349,45 @@ function prepCurrentInputData() {
 
   let year = (date[0] - 1900) / 200;
 
-  currentInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
+  currentWeatherInputData = [temperature_2m, relative_humidity_2m, apparent_temperature, precipitation, rain, snowfall, pressure_msl, surface_pressure, cloud_cover, wind_speed_10m, wind_direction_10m, wind_gusts_10m, yearPercentage, dayPercentage, year];
 }
 
-
-function train(trainingData) {
+function runNetwork() {
   console.log("let's-a-go!");
 
-  const net = new brain.NeuralNetwork({
-    activation: 'sigmoid', // activation function
-    hiddenLayers: [128, 128, 128, 128, 128, 128, 128, 128]
+  let runningNet = new brain.NeuralNetwork({
+    activation: 'relu', // activation function
+    hiddenLayers: [64, 64, 64, 64, 64, 64]
   });
+  
+  let weightArray = [];
+  weightArray[1] = trainedNet.linear_relu_stack_0_weight;
+  weightArray[2] = trainedNet.linear_relu_stack_2_weight;
+  weightArray[3] = trainedNet.linear_relu_stack_4_weight;
+  weightArray[4] = trainedNet.linear_relu_stack_6_weight;
+  weightArray[5] = trainedNet.linear_relu_stack_8_weight;
+  weightArray[6] = trainedNet.linear_relu_stack_10_weight;
+  weightArray[7] = trainedNet.linear_relu_stack_12_weight;
 
-  for (var i = 0; i < 2000; i++) {
-    net.train(trainingData, {
-      learningRate: 0.0005,
-      iterations: 1,
-      errorThresh: 0.005,
-      log: true,
-      logPeriod: 1,
-    });
+  runningNet.weights = weightArray;
+  
+  let biasesArray = [];
+  biasesArray[1] = trainedNet.linear_relu_stack_0_bias;
+  biasesArray[2] = trainedNet.linear_relu_stack_2_bias;
+  biasesArray[3] = trainedNet.linear_relu_stack_4_bias;
+  biasesArray[4] = trainedNet.linear_relu_stack_6_bias;
+  biasesArray[5] = trainedNet.linear_relu_stack_8_bias;
+  biasesArray[6] = trainedNet.linear_relu_stack_10_bias;
+  biasesArray[7] = trainedNet.linear_relu_stack_12_bias;
 
-    console.log('iteration ' + i);
-    const networkState = net.toJSON();
-    saveJSON(networkState, 'assets/network_state' + i + '.json');
-  }
+  runningNet.biases = biasesArray;
+
+  let sizesArray = [15, 64, 64, 64, 64, 64, 64, 12];
+
+  runningNet.sizes = sizesArray;
+  runningNet.outputs = [];
+
+  runningNet.run(currentWeatherInputData);
+  aiForecast = runningNet.outputs;
+  console.log(aiForecast);
 }
