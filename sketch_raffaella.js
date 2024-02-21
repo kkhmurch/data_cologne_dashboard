@@ -1,5 +1,8 @@
 var mapImage;
 let uvResponseData;
+const options = { year: 'numeric', month: 'long', day: 'numeric',hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',timeZoneName: 'long' };
 
 document.raffaellaPreload = function() {
     /*var myHeaders = new Headers();
@@ -166,7 +169,9 @@ document.raffaellaDraw = function() {
     textSize(15);
     textFont(mono_bold);
     fill(70,168,164);
-    text(currentDate, 1190, 150)
+    //text(currentDate, 1190, 150)
+    //console.log(currentDate);
+    text(currentDate.toLocaleDateString('en-EN', options), 1200, 150);
     textSize(30);
     textFont(mono_bold);
     fill(70,168,164);
