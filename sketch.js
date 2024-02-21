@@ -5,17 +5,14 @@ let mono_bold;
 // Use this to load external data, i.e. make your API calls here.
 // See https://p5js.org/reference/#/p5/preload
 function preload() {
-  //dataPrep();
-  //document.daytimePreload();
-  //document.luftPreload();
-  //document.emmaPreload();
+  document.daytimePreload();
+  document.luftPreload();
+  document.emmaPreload();
   weatherPreload();
-  //document.raffaellaPreload();
-  //test();
+  document.raffaellaPreload();
 
-  //mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
-  //mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
-  //mono_light = loadFont("https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n3oQIwlBFgg.woff2");
+  mono_light = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Light.ttf");
+  mono_bold = loadFont("assets/IBM_Plex_Mono/IBMPlexMono-Bold.ttf");
 }
 
 // Called once when the program starts.
@@ -24,13 +21,13 @@ function setup() {
 
   createCanvas(1920, 1080);
   frameRate(60);
-  //textFont(mono_light);
+  textFont(mono_light);
   
-  //document.daytimeSetup();
-  //document.luftSetup();
-  //document.emmaSetup();
+  document.daytimeSetup();
+  document.luftSetup();
+  document.emmaSetup();
   weatherSetup();
-  //document.raffaellaSetup();
+  document.raffaellaSetup();
 }
 
 // Called over and over to refresh your visualisation.
@@ -39,14 +36,12 @@ function draw() {
   colorMode(RGB);
   background(0);
 
-  //peanutsDraw();
-  //covidDraw();
-  //document.raffaellaDraw();
-  //document.daytimeDraw();
-  //document.luftDraw();
+  document.raffaellaDraw();
+  document.daytimeDraw();
+  document.luftDraw();
   noFill();
   colorMode(RGB);
-  //document.emmaDraw();
+  document.emmaDraw();
   weatherDraw();
 }
 
