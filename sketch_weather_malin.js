@@ -12,7 +12,6 @@ function weatherPreload() {
 
 function weatherSetup() {
   prepCurrentInputData();
-
   runNetwork();
 
   let currentTime = Number(currentWeatherData.current.time.split('T')[1].split(':')[0]);
