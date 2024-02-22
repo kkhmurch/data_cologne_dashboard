@@ -50,8 +50,8 @@ document.daytimeDraw = function() {
     colorMode(HSB);
     let h = map(r, innerRadius / 2, outerRadius / 2, 57, -60);
     //let s = 74;
-    let s = 219;
-    let b = 86;
+    let s = 100;
+    let b = 64;
     strokeWeight(1);
     stroke(h, s, b, 5);
     radius = 2*r;
@@ -65,7 +65,7 @@ document.daytimeDraw = function() {
     //console.log(previousCircle);
 
   }
-  //textFont('Courier New');
+  textFont(mono_bold);
   textSize(15);
   let textInnerRadX = x; // Define the x-coordinate for the text
   let textInnerRadY = radiusOfTheOuterCircle; // Define the y-coordinate for the text
