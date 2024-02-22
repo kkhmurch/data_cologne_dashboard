@@ -1,5 +1,4 @@
 let currentWeatherData;
-let trainedNet;
 let aiForecast = [];
 let currentWeatherInputData = [];
 let elementWeahterTable;
@@ -9,13 +8,10 @@ function weatherPreload() {
   // coordinates muelheim 50.98608, 7.013688
   currentWeatherData = loadJSON("https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&hourly=temperature_2m,precipitation,cloud_cover&timezone=Europe%2FBerlin&forecast_days=3");
   //("https://api.open-meteo.com/v1/forecast?latitude=50.98608&longitude=7.013688&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,rain,snowfall,cloud_cover,pressure_msl,surface_pressure,wind_speed_10m,wind_direction_10m,wind_gusts_10m&forecast_days=1");
-  
-  trainedNet = loadJSON("/assets/modelS2_fix.json");
 }
 
 function weatherSetup() {
   prepCurrentInputData();
-
   runNetwork();
 
   let currentTime = Number(currentWeatherData.current.time.split('T')[1].split(':')[0]);
