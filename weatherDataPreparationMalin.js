@@ -363,24 +363,24 @@ function runNetwork() {
   });
   
   let weightArray = [];
-  weightArray[1] = trainedNet.linear_relu_stack_0_weight;
-  weightArray[2] = trainedNet.linear_relu_stack_2_weight;
-  weightArray[3] = trainedNet.linear_relu_stack_4_weight;
-  weightArray[4] = trainedNet.linear_relu_stack_6_weight;
-  weightArray[5] = trainedNet.linear_relu_stack_8_weight;
-  weightArray[6] = trainedNet.linear_relu_stack_10_weight;
-  weightArray[7] = trainedNet.linear_relu_stack_12_weight;
+  weightArray[1] = trainedModel.linear_relu_stack_0_weight;
+  weightArray[2] = trainedModel.linear_relu_stack_2_weight;
+  weightArray[3] = trainedModel.linear_relu_stack_4_weight;
+  weightArray[4] = trainedModel.linear_relu_stack_6_weight;
+  weightArray[5] = trainedModel.linear_relu_stack_8_weight;
+  weightArray[6] = trainedModel.linear_relu_stack_10_weight;
+  weightArray[7] = trainedModel.linear_relu_stack_12_weight;
 
   runningNet.weights = weightArray;
   
   let biasesArray = [];
-  biasesArray[1] = trainedNet.linear_relu_stack_0_bias;
-  biasesArray[2] = trainedNet.linear_relu_stack_2_bias;
-  biasesArray[3] = trainedNet.linear_relu_stack_4_bias;
-  biasesArray[4] = trainedNet.linear_relu_stack_6_bias;
-  biasesArray[5] = trainedNet.linear_relu_stack_8_bias;
-  biasesArray[6] = trainedNet.linear_relu_stack_10_bias;
-  biasesArray[7] = trainedNet.linear_relu_stack_12_bias;
+  biasesArray[1] = trainedModel.linear_relu_stack_0_bias;
+  biasesArray[2] = trainedModel.linear_relu_stack_2_bias;
+  biasesArray[3] = trainedModel.linear_relu_stack_4_bias;
+  biasesArray[4] = trainedModel.linear_relu_stack_6_bias;
+  biasesArray[5] = trainedModel.linear_relu_stack_8_bias;
+  biasesArray[6] = trainedModel.linear_relu_stack_10_bias;
+  biasesArray[7] = trainedModel.linear_relu_stack_12_bias;
 
   runningNet.biases = biasesArray;
 
