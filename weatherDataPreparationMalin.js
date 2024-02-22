@@ -357,7 +357,9 @@ function runNetwork() {
 
   let runningNet = new brain.NeuralNetwork({
     activation: 'relu', // activation function
-    hiddenLayers: [64, 64, 64, 64, 64, 64]
+    hiddenLayers: [64, 64, 64, 64, 64, 64],
+    inputSize: 15,
+    outputSize: 12
   });
   
   let weightArray = [];
@@ -385,9 +387,13 @@ function runNetwork() {
   let sizesArray = [15, 64, 64, 64, 64, 64, 64, 12];
 
   runningNet.sizes = sizesArray;
-  runningNet.outputs = [];
+  let outputArray = [];
+  for (let i = 0; i < 8; i++)
+    outputArray[i] = [];
 
-  runningNet.run(currentWeatherInputData);
-  aiForecast = runningNet.outputs;
+  runningNet.outputs = outputArray;
+  runningNet.outputLayer = 7;
+
+  aiForecast = runningNet.run(currentWeatherInputData);
   console.log(aiForecast);
 }
